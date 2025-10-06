@@ -1,0 +1,1074 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Benjamin Oliver - Filmmaker, Editor, Producer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .gallery-border {
+            border: 4px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .container {
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+        .horizontal-gallery-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+        .horizontal-gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .horizontal-gallery-container::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border-radius: 4px;
+        }
+        .horizontal-gallery-item {
+            display: inline-block;
+            vertical-align: top;
+            width: 300px;
+            margin-right: 20px;
+            white-space: normal;
+        }
+        .gallery-wrapper {
+            position: relative;
+        }
+        .gallery-nav-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        .gallery-wrapper:hover .gallery-nav-btn {
+            opacity: 1;
+        }
+        .gallery-nav-btn.left {
+            left: 10px;
+        }
+        .gallery-nav-btn.right {
+            right: 10px;
+        }
+        .lightbox-backdrop {
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 50;
+        }
+        .video-player-container {
+            position: relative;
+            padding-top: 56.25%;
+            background-color: black;
+        }
+        .video-player-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-controls-container {
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 10;
+        }
+        .video-player-container:hover .video-controls-container {
+            opacity: 1;
+        }
+        .progress-bar-fill {
+            height: 4px;
+            background-color: #ffffff;
+            transition: width 0.1s linear;
+        }
+        .progress-bar-container:hover .progress-bar-fill {
+            height: 8px;
+        }
+        .thumb-scrubber {
+            width: 16px;
+            height: 16px;
+            background-color: #ffffff;
+            border-radius: 9999px;
+            transform: translateX(-50%) translateY(-50%);
+            top: 50%;
+            left: 0;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .progress-bar-container:hover .thumb-scrubber {
+            background-color: #3b82f6;
+        }
+        .video-controls-container {
+            user-select: none;
+        }
+    </style>
+</head>
+<body class="bg-white text-black leading-relaxed">
+
+    <header class="fixed top-0 left-0 w-full bg-white z-40 p-4 border-b border-gray-200">
+        <nav class="container max-w-screen-xl mx-auto flex justify-center items-center text-xs sm:text-sm font-bold tracking-wider uppercase space-x-4 md:space-x-12 px-4 md:px-20">
+            <a href="#about" class="hover:text-gray-500 transition-colors duration-200">About</a>
+            <a href="#films" class="hover:text-gray-500 transition-colors duration-200">Portfolio</a>
+            <a href="#documentary" class="hover:text-gray-500 transition-colors duration-200">Documentary</a>
+            <a href="#editing" class="hover:text-gray-500 transition-colors duration-200">Editing</a>
+            <a href="#past-work" class="hover:text-gray-500 transition-colors duration-200">Past Work</a>
+            <a href="#gallery" class="hover:text-gray-500 transition-colors duration-200">Photography</a>
+            <a href="#contact" class="hover:text-gray-500 transition-colors duration-200">Contact</a>
+        </nav>
+    </header>
+
+    <main class="pt-24 max-w-screen-xl mx-auto px-4 md:px-20">
+        <section id="about" class="py-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <img src="https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/ben.JPG" alt="A photo of the filmmaker." class="rounded-lg shadow-lg max-w-full h-auto">
+                </div>
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-4">About Me</h2>
+                    <p class="mb-3 text-sm">
+                        I am a storyteller dedicated to creating compelling narratives through film and sound. With an eye for detail and a passion for creating emotion, I believe in the power of visual and aural to inspire and connect us to our surroundings. My work includes everything from narratives to documentaries and commercial content. I am always looking for new ways to collaborate with others in order to bring important stories to life, especially if they involve spaceships. I like spaceships.
+                    </p>
+                    <p class="text-sm">
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Removed Section: recent-work -->
+
+        <section id="films" class="gallery-border py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Portfolio</h2>
+            <p class="text-lg mb-4 text-center text-gray-700">Narrative and Short Films.</p> <!-- Refers to the films in this section -->
+            <div class="gallery-wrapper relative">
+                <div id="films-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="films-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="films-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <!-- NEW DOCUMENTARY SECTION -->
+        <section id="documentary" class="gallery-border py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Documentary</h2>
+            <p class="text-lg mb-4 text-center text-gray-700">Documentary and Explainer Content.</p>
+            <div class="gallery-wrapper relative">
+                <div id="documentary-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="documentary-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="documentary-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        <!-- END NEW DOCUMENTARY SECTION -->
+
+        <section id="editing" class="gallery-border py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Editing</h2>
+            <p class="text-lg mb-4 text-center text-gray-700">Collaborations with other filmmakers.</p>
+            <div class="gallery-wrapper relative">
+                <div id="editing-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="editing-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="editing-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+
+        <section id="past-work" class="gallery-border py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Past Work</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p>
+            <div class="gallery-wrapper relative">
+                <div id="past-work-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="past-work-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="past-work-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <section id="gallery" class="gallery-border py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Photography</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p>
+            <div class="gallery-wrapper relative">
+                <div id="image-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="image-gallery-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="image-gallery-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-16">
+            <h2 class="text-3xl font-bold mb-8 text-center">Contact</h2>
+            <p class="text-lg mb-8 text-center text-gray-700">Get in touch to discuss your project.</p>
+            <div class="max-w-md mx-auto">
+                <form action="https://formspree.io/f/mandrowj" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                        <input type="email" id="email" name="_replyto" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Your Message</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-200">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+    </main>
+
+    <div id="lightbox" class="fixed inset-0 hidden items-center justify-center p-4 lightbox-backdrop">
+        <div class="relative w-full max-w-5xl rounded-lg shadow-2xl">
+            <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold z-50">
+                &times;
+            </button>
+            <div id="lightbox-content" class="rounded-lg overflow-hidden">
+                </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+
+            /* * =========================================================================
+             * VIDEO DATA SECTION
+             * Add or modify video information within the arrays below.
+             * Each object in the array represents a single video card.
+             * * Fields:
+             * - title: The title that appears on the card.
+             * - url: The YouTube embed URL. To get this, go to a YouTube video, click "Share," then "Embed," and copy the URL from the `src` attribute.
+             * - poster: The URL for the video thumbnail. For YouTube videos, you can use the format: https://i.ytimg.com/vi/VIDEO_ID/hqdefault.jpg
+             * Replace 'VIDEO_ID' with the actual video ID from the URL (e.g., 'ngAUJC6ujBI').
+             * - description: A brief description of the video.
+             * =========================================================================
+            */
+            
+            // --- Recent Work Videos (Now empty) ---
+            const recentWorkVideos = [];
+
+            // --- Documentary Videos (UPDATED: Moved several videos to Past Work) ---
+            const documentaryVideos = [
+              { "title": "The Soul Patrol", "url": "https://www.youtube.com/embed/DNu1aD0on8k", "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg", "description": "A retired police officer discusses his work in an all-Black police unit." },
+              { "title": "Create the Ultimate Zombie!", "url": "https://www.youtube.com/embed/ngAUJC6ujBI", "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg", "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects." },
+              { "title": "Growing up with the Sweet Science", "url": "https://www.youtube.com/embed/JB-2a5IFE0Q", "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg", "description": "Ken Casey and other on the lessons learned through boxing." },
+              { "title": "How to Catch Sea Urchins", "url": "https://www.youtube.com/embed/PltM_OCkFO0", "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg", "description": "A sea urchin diver demonstrates his daily routine." },
+              { "title": "These Men are Obsessed with Collecting JAWS Memorabilia!", "url": "https://www.youtube.com/embed/6uj3mfrVFB8", "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg", "description": "Collectors share their passion for Jaws memorabilia and their community." },
+              { "title": "Modern Milkman", "url": "https://www.youtube.com/embed/T1H2daO8Ksg", "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg", "description": "A milkman discusses his unique job.," },
+              { "title": "When Christmas was Banned in Boston!", "url": "https://www.youtube.com/embed/EF2buhdTjuk", "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg", "description": "A historical look at when Christmas celebrations were banned in Boston." },
+              { "title": "History of the LL Bean boots", "url": "https://www.youtube.com/embed/E8xiV8pCn5o", "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg", "description": "A historical look at the iconic LL Bean boots." },
+              { "title": "The Alcestis Machine", "url": "https://www.youtube.com/embed/Apa3qBNK2tw", "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg", "description": "From The Alcestis Machine by Carolyn Oliver." }
+            ];
+
+            // --- Films Videos (Narrative/Music remaining) ---
+            const filmVideos = [
+              
+      {
+    "title": "Life After Leukemia",
+    "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
+    "poster": "https://i.ytimg.com/vi/Q5koayQ0X0c/hqdefault.jpg",
+    "description": "A mockumentary about a former child actor falling upon rough times."
+  },
+  {
+    "title": "Ghosts",
+    "url": "https://www.youtube.com/embed/h4UgSNaT3WQ",
+    "poster": "https://i.ytimg.com/vi/h4UgSNaT3WQ/hqdefault.jpg",
+    "description": "A post apocalyptic piece about survival."
+  },
+  {
+    "title": "The Boy in the T-Rex Raincoat",
+    "url": "https://www.youtube.com/embed/bb-9fKcFeEc",
+    "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
+    "description": "Mischief, Mayhem, Dinosaur Raincoats."
+  },
+    {
+    "title": "Dave's Awesome Video Resume",
+    "url": "https://www.youtube.com/embed/omh62ob6Qy4",
+    "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
+    "description": "Dave Heatherington presents a video resume highlighting his motivation and skills."
+  },
+  {
+    "title": "D.A.V.E.",
+    "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
+    "poster": "https://i.ytimg.com/vi/v7o8P8UWWIU/hqdefault.jpg",
+    "description": "A story about a man's unconventional job search."
+  },
+  {
+    "title": "Forgotten Firepower: The Story of Porkins",
+    "url": "https://www.youtube.com/embed/lVekJ19DEQw",
+    "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
+    "description": "The story of Porkins, a hero in the fight against the Empire."
+  },
+  {
+    "title": "Northern Florida Spelunkers",
+    "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
+    "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
+    "description": "Job interview, Spelunker, Crazed movie director"
+  },
+    {
+    "title": "Dave's Awesome Video Resume",
+    "url": "https://www.youtube.com/embed/omh62ob6Qy4",
+    "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
+    "description": "How not to land a job"
+  },
+  {
+    "title": "Gimme That Shot | The Charms",
+    "url": "https://www.youtube.com/embed/_jGBEFT35FA",
+    "poster": "https://i.ytimg.com/vi/_jGBEFT35FA/hqdefault.jpg",
+    "description": "The Charms perform their song 'Gimme That Shot'."
+  },
+  {
+    "title": "Memorial Day | The Midnight Creeps",
+    "url": "https://www.youtube.com/embed/-YVujcWxrdM",
+    "poster": "https://i.ytimg.com/vi/-YVujcWxrdM/hqdefault.jpg",
+    "description": "The Midnight Creeps 'Memorial Day'."
+  },
+  {
+    "title": "The Buffer Zone | The Sterns",
+    "url": "https://www.youtube.com/embed/6AktaSdWX60",
+    "poster": "https://i.ytimg.com/vi/6AktaSdWX60/hqdefault.jpg",
+    "description": "A music video by The Sterns for their song 'The Buffer Zone'."
+  }
+            ];
+
+            // --- Editing Videos (UPDATED: Moved videos to Past Work) ---
+            const editingVideos = [
+              { 
+                title: 'Stanley',
+                url: 'https://www.youtube.com/embed/yyzRgXcAhxc',
+                poster: 'https://i.ytimg.com/vi/yyzRgXcAhxc/hqdefault.jpg',
+                description: 'Directed by Patrick McMahill"'
+              },
+              {
+                title: 'The Pixiestick Incident',
+                url: 'https://www.youtube.com/embed/R7p71Ph9yIA',
+                poster: 'https://i.ytimg.com/vi/R7p71Ph9yIA/hqdefault.jpg',
+                description: 'Directed by Michael Henry'
+              },
+              {
+                title: 'Love of a Lifetime',
+                url: 'https://www.youtube.com/embed/BsHGDvnLtX4',
+                poster: 'https://i.ytimg.com/vi/BsHGDvnLtX4/hqdefault.jpg',
+                description: 'Directed by David J. Curtis '
+              },
+              {
+                title: 'Plus 1s',
+                url: 'https://www.youtube.com/embed/zDEYn0xqJtQ',
+                poster: 'https://i.ytimg.com/vi/zDEYn0xqJtQ/hqdefault.jpg',
+                description: 'directed by David J. Curtis and Katelyn Reddy'
+              },
+              {
+                title: 'Man of Glass',
+                url: 'https://www.youtube.com/embed/fxs6m2-l85k',
+                poster: 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
+                description: 'Directed by Paul Yalen'
+              }
+          ];
+
+            // --- Past Work Videos (Includes previous "Recent" videos at the start, and now 10 more videos appended to the end) ---
+            const pastWorkVideos = [
+            // Videos moved from the "Recent" section (previous request)
+            {
+                "title": "Easy Trouble",
+                "url": "https://www.youtube.com/embed/gO8FalkbyRg",
+                "poster": "https://i.ytimg.com/vi/gO8FalkbyRg/hqdefault.jpg",
+                "description": "The Charms | Easy Trouble."
+            },
+            {
+                "title": "Who is Detective Eldridge Haas?",
+                "url": "https://www.youtube.com/embed/BSSyXBu4jLQ",
+                "poster": "https://i.ytimg.com/vi/BSSyXBu4jLQ/hqdefault.jpg",
+                "description": "From The Pixiestick Incident."
+            },
+            {
+                "title": "When Will We Have a Space Elevator?",
+                "url": "https://www.youtube.com/embed/zXF9QAkdt4c",
+                "poster": "https://i.ytimg.com/vi/zXF9QAkdt4c/hqdefault.jpg",
+                "description": "This video explores the concept of a space elevator for reaching orbit."
+            },
+            {
+                "title": "Why Earth’s Rotation Speed is Changing",
+                "url": "https://www.youtube.com/embed/_EJ0LlB35ds",
+                "poster": "https://i.ytimg.com/vi/_EJ0LlB35ds/hqdefault.jpg",
+                "description": "Neil explains factors changing Earth's rotation speed."
+            },
+            // Original Past Work Videos
+              {
+                "title": "Neil Reacts to Science TikToks",
+                "url": "https://www.youtube.com/embed/3i59t2i7lhM",
+                "poster": "https://i.ytimg.com/vi/3i59t2i7lhM/hqdefault.jpg",
+                "description": "Neil and Chuck Nice react to science-related TikToks."
+              },
+              {
+                "title": "An Expert Corrects Neil on His Explanation of Lightning",
+                "url": "https://www.youtube.com/embed/cZNEHbpvpZY",
+                "poster": "https://i.ytimg.com/vi/cZNEHbpvpZY/hqdefault.jpg",
+                "description": "A lightning expert corrects Neil's explanation of lightning."
+              },
+              {
+                "title": "Does Size Really Matter? (In Physics)",
+                "url": "https://www.youtube.com/embed/jdTRWxafbGk",
+                "poster": "https://i.ytimg.com/vi/jdTRWxafbGk/hqdefault.jpg",
+                "description": "Neil discusses how physics impacts life forms of different sizes."
+              },
+              {
+                "title": "Neil's Most Obscure Explainer",
+                "url": "https://www.youtube.com/embed/TjLxK5vRDs0",
+                "poster": "https://i.ytimg.com/vi/TjLxK5vRDs0/hqdefault.jpg",
+                "description": "This episode delves into harmonic motion in physics."
+              },
+              {
+                "title": "Astrophysicists Try to Resolve the Wave-Particle Duality",
+                "url": "https://www.youtube.com/embed/L9ub_B71U0E",
+                "poster": "https://i.ytimg.com/vi/L9ub_B71U0E/hqdefault.jpg",
+                "description": "Astrophysicists discuss the wave-particle duality in quantum physics."
+              },
+              {
+                "title": "On Being Wrong",
+                "url": "https://www.youtube.com/embed/ua-eXgUQZ8Y",
+                "poster": "https://i.ytimg.com/vi/ua-eXgUQZ8Y/hqdefault.jpg",
+                "description": "Neil reflects on being wrong in science and the importance of correction."
+              },
+              {
+                "title": "Why Are the LA Wildfires So Extreme?",
+                "url": "https://www.youtube.com/embed/qDZ2fR8QdTg",
+                "poster": "https://i.ytimg.com/vi/qDZ2fR8QdTg/hqdefault.jpg",
+                "description": "Daniel Swain explains the extreme nature of LA wildfires due to various factors."
+              },
+              {
+                "title": "How to Travel Anywhere On Earth in 45 Minutes",
+                "url": "https://www.youtube.com/embed/CfNWYGHMvcY",
+                "poster": "https://i.ytimg.com/vi/CfNWYGHMvcY/hqdefault.jpg",
+                "description": "This explainer discusses theoretical 'gravity trains' for fast Earth travel."
+              },
+              {
+                "title": "The Discovery That Changed the Universe",
+                "url": "https://www.youtube.com/embed/5vBpqY8PYsA",
+                "poster": "https://i.ytimg.com/vi/5vBpqY8PYsA/hqdefault.jpg",
+                "description": "Neil celebrates Edwin Hubble's universe-changing discoveries."
+              },
+              {
+                "title": "Why We Can’t See Underwater but Fish Can",
+                "url": "https://www.youtube.com/embed/KQlhHh7kzQ4",
+                "poster": "https://i.ytimg.com/vi/KQlhHh7kzQ4/hqdefault.jpg",
+                "description": "Neil explains why human sight is blurry underwater and how fish see clearly."
+              },
+              {
+                "title": "Why Our Counting System is Biased",
+                "url": "https://www.youtube.com/embed/tqO94YKFRpk",
+                "poster": "https://i.ytimg.com/vi/tqO94YKFRpk/hqdefault.jpg",
+                "description": "Neil explores biases in our base-10 counting system."
+              },
+              {
+                "title": "Is It A Comet or Alien Technology?",
+                "url": "https://www.youtube.com/embed/FsyzVoIuUGU",
+                "poster": "https://i.ytimg.com/vi/FsyzVoIuUGU/hqdefault.jpg",
+                "description": "Neil discusses anomalous interstellar objects and the 'alien of the gaps' phenomenon."
+              },
+              {
+                "title": "Master of Orion - Voice Actors Trailer",
+                "url": "https://www.youtube.com/embed/mdFCfmng2Yo",
+                "poster": "https://i.ytimg.com/vi/mdFCfmng2Yo/hqdefault.jpg",
+                "description": "Voice actors discuss their roles in Master of Orion."
+              },
+              {
+                "title": "Behind the Scenes with Phil LaMarr | Samurai Jack: Battle Through Time | Adult Swim Games",
+                "url": "https://www.youtube.com/embed/VjeK8iCEk5M",
+                "poster": "https://i.ytimg.com/vi/VjeK8iCEk5M/hqdefault.jpg",
+                "description": "Phil LaMarr discusses voicing Samurai Jack."
+              },
+              {
+                "title": "Behind the Scenes with Tara Strong | Samurai Jack: Battle Through Time | Adult Swim Games",
+                "url": "https://www.youtube.com/embed/ib9nXNma5lQ",
+                "poster": "https://i.ytimg.com/vi/ib9nXNma5lQ/hqdefault.jpg",
+                "description": "Tara Strong talks about playing Ashi in the game."
+              },
+              {
+                "title": "Jack’s Friends | Samurai Jack: Battle Through Time | Adult Swim Games",
+                "url": "https://www.youtube.com/embed/fmkCGU8GpkE",
+                "poster": "https://i.ytimg.com/vi/fmkCGU8GpkE/hqdefault.jpg",
+                "description": "Voice actors discuss Jack's allies."
+              },
+              {
+                "title": "Behind the Scenes with Greg Baldwin | Samurai Jack: Battle Through Time | Adult Swim Games",
+                "url": "https://www.youtube.com/embed/uouSxwo64v4",
+                "poster": "https://i.ytimg.com/vi/uouSxwo64v4/hqdefault.jpg",
+                "description": "Greg Baldwin discusses his role as Aku."
+              },
+              {
+                "title": "Jack’s Enemies | Samurai Jack: Battle Through Time | Adult Swim Games",
+                "url": "https://www.youtube.com/embed/vLbfDlgu6SM",
+                "poster": "https://i.ytimg.com/vi/vLbfDlgu6SM/hqdefault.jpg",
+                "description": "Voice actors discuss Jack's enemies."
+              },
+              {
+                "title": "Behind the Voice - Scarecrow",
+                "url": "https://www.youtube.com/embed/TCdTx6m5GwU",
+                "poster": "https://i.ytimg.com/vi/TCdTx6m5GwU/hqdefault.jpg",
+                "description": "Dino Andrade discusses voicing Scarecrow."
+              },
+              {
+                "title": "Behind the Voice - Batman",
+                "url": "https://www.youtube.com/embed/t2EKyh4869o",
+                "poster": "https://i.ytimg.com/vi/t2EKyh4869o/hqdefault.jpg",
+                "description": "Kevin Conroy discusses playing Batman in the game."
+              },
+              {
+                "title": "Behind the Voice - Harley Quinn",
+                "url": "https://www.youtube.com/embed/zUu1nQXFmG8",
+                "poster": "https://i.ytimg.com/vi/zUu1nQXFmG8/hqdefault.jpg",
+                "description": "Tara Strong discusses voicing Harley Quinn."
+              },
+              {
+                "title": "Behind the Voice - Killer Croc",
+                "url": "https://www.youtube.com/embed/B_w-x3ZeIMM",
+                "poster": "https://i.ytimg.com/vi/B_w-x3ZeIMM/hqdefault.jpg",
+                "description": "Khary Payton discusses voicing Killer Croc."
+              },
+              {
+                "title": "Behind the Voice - Carmine Falcone",
+                "url": "https://www.youtube.com/embed/sjH7eg6yQnk",
+                "poster": "https://i.ytimg.com/vi/sjH7eg6yQnk/hqdefault.jpg",
+                "description": "John Polson discusses voicing Carmine Falcone."
+              },
+              {
+                "title": "Behind the voice - Mr Freeze",
+                "url": "https://www.youtube.com/embed/FFUw4zekaOc",
+                "poster": "https://i.ytimg.com/vi/FFUw4zekaOc/hqdefault.jpg",
+                "description": "Maurice LaMarche discusses voicing Mr. Freeze."
+              },
+              {
+                "title": "Behind the Voice - The Riddler",
+                "url": "https://www.youtube.com/embed/1ryO0ClZ53o",
+                "poster": "https://i.ytimg.com/vi/1ryO0ClZ53o/hqdefault.jpg",
+                "description": "Wally Wingert discusses voicing The Riddler."
+              },
+              {
+                "title": "Behind the Voice: Frederick Theodore Posenor III as Krypto",
+                "url": "https://www.youtube.com/embed/LHhN9K7uddA",
+                "poster": "https://i.ytimg.com/vi/LHhN9K7uddA/hqdefault.jpg",
+                "description": "Frederick Theodore Posenor III discusses voicing Krypto."
+              },
+              {
+                "title": "Behind the Voice: María Canals Barrera as Hawkgirl",
+                "url": "https://www.youtube.com/embed/KdHADpeCUe8",
+                "poster": "https://i.ytimg.com/vi/KdHADpeCUe8/hqdefault.jpg",
+                "description": "María Canals Barrera discusses voicing Hawkgirl."
+              },
+              {
+                "title": "Behind the Voice: Michael Dorn as Swamp Thing",
+                "url": "https://www.youtube.com/embed/ym8VJ2jzr-8",
+                "poster": "https://i.ytimg.com/vi/ym8VJ2jzr-8/hqdefault.jpg",
+                "description": "Michael Dorn discusses voicing Swamp Thing."
+              },
+              {
+                "title": "Behind the Voice: India de Beaufort as Arcane Supergirl",
+                "url": "https://www.youtube.com/embed/16786H8IPHA",
+                "poster": "https://i.ytimg.com/vi/16786H8IPHA/hqdefault.jpg",
+                "description": "India de Beaufort discusses voicing Arcane Supergirl."
+              },
+              {
+                "title": "Behind the Voice: Mark Rolston as Starro",
+                "url": "https://www.youtube.com/embed/KQfQwePNnto",
+                "poster": "https://i.ytimg.com/vi/KQfQwePNnto/hqdefault.jpg",
+                "description": "Mark Rolston discusses voicing Starro."
+              },
+              {
+                "title": "Behind the Voice: Natalie Lander as Stargirl",
+                "url": "https://www.youtube.com/embed/TxuE-GaoVTQ",
+                "poster": "https://i.ytimg.com/vi/TxuE-GaoVTQ/hqdefault.jpg",
+                "description": "Natalie Lander discusses voicing Stargirl."
+              },
+              {
+                "title": "Behind the Voice: Nolan North as Atomic Joker",
+                "url": "https://www.youtube.com/embed/uQNcMCbMBso",
+                "poster": "https://i.ytimg.com/vi/uQNcMCbMBso/hqdefault.jpg",
+                "description": "Nolan North discusses voicing Atomic Joker."
+              },
+              {
+                "title": "Behind the Voice: James Arnold Taylor as Nightmare Robin",
+                "url": "https://www.youtube.com/embed/_LRKeo0AO1I",
+                "poster": "https://i.ytimg.com/vi/_LRKeo0AO1I/hqdefault.jpg",
+                "description": "James Arnold Taylor discusses voicing Nightmare Robin."
+              },
+              {
+                "title": "Behind the Voice: Kelly Hu as Katana",
+                "url": "https://www.youtube.com/embed/lTAw7EXEUKA",
+                "poster": "https://i.ytimg.com/vi/lTAw7EXEUKA/hqdefault.jpg",
+                "description": "Kelly Hu discusses voicing Katana."
+              },
+            // Videos moved from Documentary and Editing (previous request)
+            { "title": "What is an MRE?", "url": "https://www.youtube.com/embed/jau3dQwN2IE", "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg", "description": "An expliner about MREs (Meal, Ready-to-Eat) and their continuous improvement." },
+            { "title": "The Man Behind Your Favorite Local Ads", "url": "https://www.youtube.com/embed/SgGEaq4dq48", "poster": "https://i.ytimg.com/vi/SgGEaq4dq48/hqdefault.jpg", "description": "Lou Leta talks about his career in producing local television commercials." },
+            { "title": "How to re-create the JAWS dolly zoom in 2024", "url": "https://www.youtube.com/embed/J218Oi8PGlw", "poster": "https://i.ytimg.com/vi/J218Oi8PGlw/hqdefault.jpg", "description": "Beecher Cotten recreates the iconic 'dolly zoom' shot from the movie Jaws." },
+            { "title": "How to play \"Tiddily Winks\"", "url": "https://www.youtube.com/embed/8polV7GTIjc", "poster": "https://i.ytimg.com/vi/8polV7GTIjc/hqdefault.jpg", "description": "Ferd Wulkan explains the game of Tiddlywinks." },
+            { "title": "What is the secret to an everlasting marriage?", "url": "https://www.youtube.com/embed/j1KZeSdSrqg", "poster": "https://i.ytimg.com/vi/j1KZeSdSrqg/hqdefault.jpg", "description": "Couples share insights and on maintaining a long-lasting marriage." },
+            { "title": "A brief history of the Salem Witch Trials", "url": "https://www.youtube.com/embed/C7M2nfCstng", "poster": "https://i.ytimg.com/vi/C7M2nfCstng/hqdefault.jpg", "description": "A quick overview of the Salem Witch Trials and their tragic events." },
+            { "title": "Vernon Downs", "url": "https://www.youtube.com/embed/h4hfEk5Df3c", "poster": "https://i.ytimg.com/vi/h4hfEk5Df3c/hqdefault.jpg", "description": "By Jamie Clarke" },
+            { "title": "World Gone Water", "url": "https://www.youtube.com/embed/P4DenOxJVs4", "poster": "https://i.ytimg.com/vi/P4DenOxJVs4/hqdefault.jpg", "description": "By Jamie Clarke" },
+            {
+              title: 'Autumn Black | This I Promise',
+              url: 'https://www.youtube.com/embed/tDn7dzWDoZU',
+              poster: 'https://i.ytimg.com/vi/tDn7dzWDoZU/hqdefault.jpg',
+              description: 'Directed by Ian McFarland'
+            },
+            {
+              title: 'Autumn',
+              url: 'https://www.youtube.com/embed/rlY998kyFB4',
+              poster: 'https://i.ytimg.com/vi/rlY998kyFB4/hqdefault.jpg',
+              description: 'Directed by Mike Pecci'
+            }
+              ];
+
+            
+            /* * =========================================================================
+             * IMAGE GALLERY DATA SECTION
+             * Add or modify image information within the array below.
+             * Each object represents a single image in the gallery.
+             * * Fields:
+             * - title: A title or a brief description of the image.
+             * - url: The URL of the image.
+             * - description: A brief text description that appears under the image.
+             * =========================================================================
+            */
+
+            const galleryImages = [
+                {
+                    title: "Madrid",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/01.jpg",
+                    description: ""
+                },
+                {
+                    title: "Alhambra",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/02.jpg",
+                    description: ""
+                },
+                {
+                    title: "Watercolor",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/03.jpg",
+                    description: ""
+                },
+                {
+                    title: "Bethel",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/04.jpg",
+                    description: ""
+                },
+                {
+                    title: "Tractor",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/05.jpg",
+                    description: ""
+                },
+                {
+                    title: "Escorial",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/06.jpg",
+                    description: ""
+                },
+                {
+                    title: "Cinema",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/07.jpg",
+                    description: ""
+                },
+                {
+                    title: "paints",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/08.jpg",
+                    description: ""
+                },
+                {
+                    title: "Mount Auburn",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/09.jpg",
+                    description: ""
+                },
+                {
+                    title: "Ipswich",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/10.jpg",
+                    description: ""
+                },
+                {
+                    title: "Blue",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/11.jpg",
+                    description: ""
+                },
+                {
+                    title: "Iceland",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/12.jpg",
+                    description: ""
+                },
+                {
+                    title: "Light",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/13.jpg",
+                    description: ""
+                },
+                {
+                    title: "Tectonic",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/14.jpg",
+                    description: ""
+                },
+                {
+                    title: "Sky",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/15.jpg",
+                    description: ""
+                },
+                {
+                    title: "Tomatillo",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/16.jpg",
+                    description: ""
+                },
+                {
+                    title: "Purple",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/17.jpg",
+                    description: ""
+                },
+                {
+                    title: "Vocal",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/18.jpg",
+                    description: ""
+                },
+                {
+                    title: "Moon",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/19.jpg",
+                    description: ""
+                },
+                {
+                    title: "Zakim",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/20.jpg",
+                    description: ""
+                },
+                {
+                    title: "Converse",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/21.jpg",
+                    description: ""
+                },
+
+                {
+                    title: "Thoughts",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/23.jpg",
+                    description: ""
+                },
+                {
+                    title: "Onward",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/40.jpg",
+                    description: ""
+                },
+                                {
+                    title: "Feel the Bern",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/22.jpg",
+                    description: ""
+                },
+                {
+                    title: "Bernie",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/25.jpg",
+                    description: ""
+                },
+                {
+                    title: "Bernie 2",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/26.jpg",
+                    description: ""
+                },
+                                {
+                    title: "blues",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/24.jpg",
+                    description: ""
+                },
+                {
+                    title: "Ken",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/27.jpg",
+                    description: ""
+                },
+                {
+                    title: "Dropkick",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/28.jpg",
+                    description: ""
+                },
+                {
+                    title: "Shipping up",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/29.jpg",
+                    description: ""
+                },
+                {
+                    title: "to Boston",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/30.jpg",
+                    description: ""
+                },
+                {
+                    title: "Rocky",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/32.jpg",
+                    description: ""
+                },
+                {
+                    title: "Backpack",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/34.jpg",
+                    description: ""
+                },
+                {
+                    title: "Autumnal",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/35.jpg",
+                    description: ""
+                },
+                {
+                    title: "Snow",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/36.jpg",
+                    description: ""
+                },
+                {
+                    title: "Watching",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/37.jpg",
+                    description: ""
+                },
+                {
+                    title: "Fumes",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/38.jpg",
+                    description: ""
+                },
+                {
+                    title: "Solidarity",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/41.jpg",
+                    description: ""
+                },
+                                {
+                    title: "I voted for the maniac.",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/42.jpg",
+                    description: ""
+                },
+                                {
+                    title: "Not anymore..",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/43.jpg",
+                    description: ""
+                },
+                                {
+                    title: "The shots woke me up.",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/45.jpg",
+                    description: ""
+                },
+                                {
+                    title: "Government Center",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/governmentcenter.png",
+                    description: ""
+                },
+                                                {
+                    title: "2016 NH",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/nh16.jpg",
+                    description: ""
+                },
+                                                {
+                    title: "X Files in MA",
+                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/xfiles.gif",
+                    description: ""
+                }
+            ];
+
+            // =========================================================================
+            //  END OF VIDEO & IMAGE DATA SECTIONS
+            //  No need to edit below this line unless you are changing the functionality.
+            // =========================================================================
+
+            // Removed 'recentWork' variables as the section was removed.
+            
+            const filmsGallery = document.getElementById('films-gallery');
+            const filmsLeftBtn = document.getElementById('films-left-btn');
+            const filmsRightBtn = document.getElementById('films-right-btn');
+            
+            // NEW DOCUMENTARY VARIABLES
+            const documentaryGallery = document.getElementById('documentary-gallery');
+            const documentaryLeftBtn = document.getElementById('documentary-left-btn');
+            const documentaryRightBtn = document.getElementById('documentary-right-btn');
+
+            const editingGallery = document.getElementById('editing-gallery');
+            const editingLeftBtn = document.getElementById('editing-left-btn');
+            const editingRightBtn = document.getElementById('editing-right-btn');
+
+            const pastWorkGallery = document.getElementById('past-work-gallery');
+            const pastWorkLeftBtn = document.getElementById('past-work-left-btn');
+            const pastWorkRightBtn = document.getElementById('past-work-right-btn');
+            
+            const imageGallery = document.getElementById('image-gallery');
+            const imageGalleryLeftBtn = document.getElementById('image-gallery-left-btn');
+            const imageGalleryRightBtn = document.getElementById('image-gallery-right-btn');
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const lightboxCloseBtn = document.getElementById('lightbox-close');
+
+            function populateHorizontalGallery(galleryElement, items, isVideo = true) {
+                galleryElement.innerHTML = '';
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    card.className = "horizontal-gallery-item bg-white rounded-lg shadow-lg overflow-hidden flex-shrink-0";
+                    
+                    if (isVideo) {
+                        card.innerHTML = `
+                            <div class="relative aspect-video cursor-pointer">
+                                <img src="${item.poster}" alt="${item.title} Poster" class="w-full h-full object-cover rounded-t-lg">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+                                <p class="text-sm text-gray-700">${item.description}</p>
+                            </div>
+                        `;
+                        card.dataset.url = item.url;
+                        card.dataset.poster = item.poster;
+                    } else {
+                         card.innerHTML = `
+                            <div class="relative aspect-video cursor-pointer">
+                                <img src="${item.url}" alt="${item.title}" class="w-full h-full object-cover rounded-t-lg">
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-xl font-bold mb-2">${item.title}</h3>
+                                <p class="text-sm text-gray-700">${item.description}</p>
+                            </div>
+                        `;
+                        card.dataset.url = item.url;
+                    }
+                    galleryElement.appendChild(card);
+                });
+            }
+
+            function setupGalleryNavigation(leftBtn, rightBtn, gallery) {
+                leftBtn.addEventListener('click', () => {
+                    gallery.scrollBy({ left: -320, behavior: 'smooth' });
+                });
+
+                rightBtn.addEventListener('click', () => {
+                    gallery.scrollBy({ left: 320, behavior: 'smooth' });
+                });
+            }
+
+            // Setup new documentary navigation
+            setupGalleryNavigation(documentaryLeftBtn, documentaryRightBtn, documentaryGallery);
+            setupGalleryNavigation(filmsLeftBtn, filmsRightBtn, filmsGallery);
+            setupGalleryNavigation(editingLeftBtn, editingRightBtn, editingGallery);
+            setupGalleryNavigation(pastWorkLeftBtn, pastWorkRightBtn, pastWorkGallery);
+            setupGalleryNavigation(imageGalleryLeftBtn, imageGalleryRightBtn, imageGallery);
+
+
+            populateHorizontalGallery(filmsGallery, filmVideos);
+            // Populate new documentary section
+            populateHorizontalGallery(documentaryGallery, documentaryVideos);
+            populateHorizontalGallery(editingGallery, editingVideos);
+            populateHorizontalGallery(pastWorkGallery, pastWorkVideos);
+            populateHorizontalGallery(imageGallery, galleryImages, false);
+
+            document.querySelectorAll('.horizontal-gallery-item').forEach(card => {
+                card.addEventListener('click', () => {
+                    const itemUrl = card.dataset.url;
+                    
+                    // Check if it's a video or an image
+                    if (itemUrl.includes('youtube.com/embed')) {
+                        const iframeContainer = document.createElement('div');
+                        iframeContainer.className = 'relative video-player-container rounded-lg';
+                        iframeContainer.innerHTML = `
+                            <iframe 
+                                class="w-full h-full rounded-lg absolute inset-0" 
+                                src="${itemUrl}?autoplay=1&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                            ></iframe>
+                        `;
+                        openLightbox(iframeContainer);
+                    } else {
+                        const imageElement = document.createElement('img');
+                        imageElement.src = itemUrl;
+                        imageElement.alt = card.querySelector('h3').textContent;
+                        imageElement.className = 'max-w-full max-h-screen';
+                        
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'flex justify-center items-center';
+                        imageContainer.appendChild(imageElement);
+                        
+                        openLightbox(imageContainer);
+                    }
+                });
+            });
+
+            function openLightbox(content) {
+                lightboxContent.innerHTML = '';
+                lightboxContent.appendChild(content);
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+            }
+
+            function closeLightbox() {
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxContent.innerHTML = '';
+            }
+
+            lightboxCloseBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                if (e.target === lightbox) {
+                    closeLightbox();
+                }
+            });
+
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+        });
+    </script>
+</body>
+</html>

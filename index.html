@@ -30,13 +30,22 @@
     <!-- PERFORMANCE OPTIMIZATION (Preconnecting to external hosts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <!-- REMOVED: Old Montserrat link is gone. Custom font will be added via @font-face -->
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="preconnect" href="https://raw.githubusercontent.com">
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* FONT HOSTING: Custom Font Face Rule */
+        @font-face {
+            font-family: 'TAYBirdie';
+            /* UPDATED: Changed to the RAW GitHub link for the .otf file */
+            src: url('https://raw.githubusercontent.com/benhasglasses/portfolio/main/TAYBirdie.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
+
         /* Visually Hidden H1 for SEO, keeps page design clean (Retained) */
         .sr-only { 
             position: absolute;
@@ -51,8 +60,8 @@
         }
 
         body {
-            /* FONT: Using Montserrat */
-            font-family: 'Montserrat', sans-serif;
+            /* FONT: Using TAYBirdie font from GitHub */
+            font-family: 'TAYBirdie', sans-serif;
             background-color: #ffffff;
             color: #000000;
         }

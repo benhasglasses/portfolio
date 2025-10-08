@@ -2,25 +2,23 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <!-- MANDATORY RESPONSIVE META TAG: Ensures proper scaling on all devices -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
     <!-- PRIMARY SEO TAGS -->
     <title>Benjamin Oliver - Filmmaker, Editor, Producer, Post Production Specialist</title>
     <meta name="description" content="Professional portfolio of Benjamin Oliver: Award-winning Filmmaker, Editor, and Producer specializing in narratives, documentaries, and post-production. Hire a creative storyteller.">
-    <!-- UPDATED: Canonical URL set to primary domain -->
     <link rel="canonical" href="https://www.benjaminoliver.net">
 
     <!-- OPEN GRAPH (OG) TAGS for Social Sharing -->
     <meta property="og:title" content="Benjamin Oliver | Filmmaker & Editor Portfolio">
     <meta property="og:description" content="Explore compelling narratives, documentaries, post-production work, and photography by Benjamin Oliver, a dedicated storyteller.">
     <meta property="og:type" content="website">
-    <!-- UPDATED: OG URL set to primary domain -->
     <meta property="og:url" content="https://www.benjaminoliver.net">
     <meta property="og:image" content="https://placehold.co/1200x630/000000/FFFFFF?text=Benjamin+Oliver+Portfolio">
     
     <!-- TWITTER/BLUESKY CARD TAGS for Social Sharing -->
     <meta name="twitter:card" content="summary_large_image">
-    <!-- UPDATED: Twitter/X references changed to Bluesky handle -->
     <meta name="twitter:site" content="@benhasglasses (Bluesky)">
     <meta name="twitter:creator" content="@benhasglasses">
     <meta name="twitter:title" content="Filmmaker, Editor, & Producer Portfolio | Benjamin Oliver">
@@ -30,7 +28,6 @@
     <!-- PERFORMANCE OPTIMIZATION (Preconnecting to external hosts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- REMOVED: Old Montserrat link is gone. Custom font will be added via @font-face -->
     <link rel="preconnect" href="https://www.youtube.com">
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="preconnect" href="https://raw.githubusercontent.com">
@@ -40,7 +37,6 @@
         /* FONT HOSTING: Custom Font Face Rule */
         @font-face {
             font-family: 'TAYBirdie';
-            /* UPDATED: Changed to the RAW GitHub link for the .otf file */
             src: url('https://raw.githubusercontent.com/benhasglasses/portfolio/main/TAYBirdie.otf') format('opentype');
             font-weight: 400;
             font-style: normal;
@@ -71,10 +67,7 @@
             padding: 20px;
             margin-bottom: 20px;
         }
-        .container {
-            max-width: 90vw;
-            margin: 0 auto;
-        }
+        
         .horizontal-gallery-container {
             overflow-x: auto;
             white-space: nowrap;
@@ -91,6 +84,8 @@
         .horizontal-gallery-item {
             display: inline-block;
             vertical-align: top;
+            /* Using min-width ensures it doesn't shrink below 300px while retaining the design intention */
+            min-width: 300px; 
             width: 300px;
             margin-right: 20px;
             white-space: normal;
@@ -109,10 +104,27 @@
             z-index: 10;
             opacity: 0;
             transition: opacity 0.3s;
+            cursor: pointer; /* Added cursor pointer for better UX */
         }
         .gallery-wrapper:hover .gallery-nav-btn {
             opacity: 1;
         }
+
+        /* RESPONSIVENESS FIX: Ensure gallery buttons are visible on smaller screens where :hover is not reliable */
+        @media (max-width: 767px) {
+            .gallery-nav-btn {
+                opacity: 1 !important; /* Force visible on mobile/tablet */
+                /* Adjust padding to prevent clipping on touch */
+                padding: 8px;
+            }
+            .gallery-nav-btn.left {
+                left: 0;
+            }
+            .gallery-nav-btn.right {
+                right: 0;
+            }
+        }
+
         .gallery-nav-btn.left {
             left: 10px;
         }
@@ -204,16 +216,14 @@
     <h1 class="sr-only">Benjamin Oliver - Professional Filmmaker, Editor, and Video Producer Portfolio</h1>
 
     <header class="fixed top-0 left-0 w-full bg-white z-40 p-4 border-b border-gray-200">
-        <!-- FONT SIZE INCREASE: text-xs/sm -> text-sm/base -->
-        <nav class="container max-w-screen-xl mx-auto flex justify-center items-center text-sm sm:text-base font-bold tracking-wider uppercase space-x-4 md:space-x-12 px-4 md:px-20">
-            <a href="#about" class="hover:text-gray-500 transition-colors duration-200">About</a>
-            <a href="#films" class="hover:text-gray-500 transition-colors duration-200">Portfolio</a>
-            <a href="#documentary" class="hover:text-gray-500 transition-colors duration-200">Documentary</a>
-            <a href="#editing" class="hover:text-gray-500 transition-colors duration-200">Editing</a>
-            <!-- UPDATED: Navigation link text changed to Archive -->
-            <a href="#past-work" class="hover:text-gray-500 transition-colors duration-200">Archive</a>
-            <a href="#gallery" class="hover:text-gray-500 transition-colors duration-200">Photography</a>
-            <a href="#contact" class="hover:text-gray-500 transition-colors duration-200">Contact</a>
+        <!-- UPDATED: Moved Photography link before Archive link -->
+        <nav class="max-w-screen-xl mx-auto flex justify-center items-center text-sm sm:text-base font-bold tracking-wider uppercase space-x-2 md:space-x-12 px-2 md:px-20 overflow-x-auto whitespace-nowrap">
+            <a href="#about" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">About</a>
+            <a href="#films" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Portfolio</a>
+            <a href="#editing" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Editing</a>
+            <a href="#gallery" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Photography</a>
+            <a href="#past-work" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Archive</a>
+            <a href="#contact" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Contact</a>
         </nav>
     </header>
 
@@ -222,22 +232,18 @@
             <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
                 <div class="w-full md:w-1/2 flex justify-center">
                     <img src="https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/ben.JPG" 
-                         alt="Professional headshot of Benjamin Oliver, Filmmaker, wearing glasses." 
-                         loading="lazy"
-                         class="rounded-lg shadow-lg max-w-full h-auto">
+                            alt="Professional headshot of Benjamin Oliver, Filmmaker, wearing glasses." 
+                            loading="lazy"
+                            class="rounded-lg shadow-lg max-w-full h-auto">
                 </div>
                 <div class="w-full md:w-1/2 text-center md:text-left">
-                    <!-- HEADING CHANGE: Added uppercase class -->
                     <h2 class="text-4xl font-bold mb-4 uppercase">About Me</h2>
-                    <!-- FONT SIZE INCREASE: text-sm -> text-base -->
                     <p class="mb-3 text-base">
                         I am a storyteller dedicated to creating compelling narratives through film and sound. With an eye for detail and a passion for creating emotion, I believe in the power of visual and aural to inspire and connect us to our surroundings. My work includes everything from narratives to documentaries and commercial content. I am always looking for new ways to collaborate with others in order to bring important stories to life, especially if they involve spaceships. I like spaceships.
                     </p>
-                    <!-- FONT SIZE INCREASE: text-sm -> text-base -->
                     <p class="text-base">
                         You can find more of my work and content on my YouTube channel: <a href="https://www.youtube.com/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">youtube.com/benhasglasses</a>.
                     </p>
-                    <!-- NEW: Added Bluesky link -->
                     <p class="text-base">
                         Follow me on **Bluesky**: <a href="https://bsky.app/profile/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">@benhasglasses</a>.
                     </p>
@@ -245,13 +251,14 @@
             </div>
         </section>
 
+        <!-- Gallery sections rely on horizontal-gallery-container's overflow-x: auto for touch scrolling -->
         <section id="films" class="gallery-border py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
             <h2 class="text-4xl font-bold mb-8 text-center uppercase">Portfolio</h2>
             <p class="text-lg mb-4 text-center text-gray-700"></p> 
             <div class="gallery-wrapper relative">
                 <div id="films-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
                 </div>
+                <!-- Navigation buttons are made visible on mobile via CSS adjustments -->
                 <button id="films-left-btn" class="gallery-nav-btn left-0">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
@@ -265,30 +272,10 @@
             </div>
         </section>
 
-        <section id="documentary" class="gallery-border py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Documentaries</h2>
-            <p class="text-lg mb-4 text-center text-gray-700"></p>
-            <div class="gallery-wrapper relative">
-                <div id="documentary-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                <button id="documentary-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="documentary-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
+        <!-- REMOVED: Section id="documentary" has been removed as requested. -->
 
         <section id="editing" class="gallery-border py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
             <h2 class="text-4xl font-bold mb-8 text-center uppercase">Post Production</h2>
-            <!-- FONT SIZE INCREASE: text-lg -> text-xl -->
             <p class="text-xl mb-4 text-center text-gray-700">Collaborations with other filmmakers.</p>
             <div class="gallery-wrapper relative">
                 <div id="editing-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
@@ -306,28 +293,8 @@
             </div>
         </section>
 
-        <section id="past-work" class="gallery-border py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Archive</h2>
-            <p class="text-lg mb-4 text-center text-gray-700"></p>
-            <div class="gallery-wrapper relative">
-                <div id="past-work-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                <button id="past-work-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="past-work-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
-        
+        <!-- MOVED SECTION: Photography now appears above Archive -->
         <section id="gallery" class="gallery-border py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
             <h2 class="text-4xl font-bold mb-8 text-center uppercase">Photography</h2>
             <p class="text-lg mb-4 text-center text-gray-700"></p>
             <div class="gallery-wrapper relative">
@@ -346,10 +313,28 @@
             </div>
         </section>
         
+        <!-- MOVED SECTION: Archive now appears after Photography -->
+        <section id="past-work" class="gallery-border py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Archive</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p>
+            <div class="gallery-wrapper relative">
+                <div id="past-work-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="past-work-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="past-work-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
         <section id="contact" class="py-16">
-            <!-- HEADING CHANGE: Added uppercase class -->
             <h2 class="text-4xl font-bold mb-8 text-center uppercase">Contact</h2>
-            <!-- FONT SIZE INCREASE: text-lg -> text-xl -->
             <p class="text-xl mb-8 text-center text-gray-700">Get in touch to discuss your project.</p>
             <div class="max-w-md mx-auto">
                 <form action="https://formspree.io/f/mandrowj" method="POST" class="space-y-6">
@@ -377,7 +362,8 @@
     </main>
 
     <div id="lightbox" class="fixed inset-0 hidden items-center justify-center p-4 lightbox-backdrop">
-        <div class="relative w-full max-w-5xl rounded-lg shadow-2xl">
+        <!-- Responsive Lightbox: Reduced max-w from 5xl to 3xl for better mobile fit, while still allowing large size -->
+        <div class="relative w-full max-w-5xl md:max-w-3xl lg:max-w-5xl rounded-lg shadow-2xl">
             <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold z-50">
                 &times;
             </button>
@@ -391,29 +377,17 @@
 
             /* * =========================================================================
             * VIDEO DATA SECTION
-            * Descriptions reverted to their original, less detailed state.
             * =========================================================================
             */
             
             // --- Recent Work Videos (Now empty) ---
             const recentWorkVideos = [];
 
-            // --- Documentary Videos (Descriptions reverted) ---
-            const documentaryVideos = [
-                { "title": "The Soul Patrol", "url": "https://www.youtube.com/embed/DNu1aD0on8k", "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg", "description": "A retired police officer discusses his work in an all-Black police unit." },
-                { "title": "Create the Ultimate Zombie!", "url": "https://www.youtube.com/embed/ngAUJC6ujBI", "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg", "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects." },
-                { "title": "Growing up with the Sweet Science", "url": "https://www.youtube.com/embed/JB-2a5IFE0Q", "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg", "description": "Ken Casey and other on the lessons learned through boxing." },
-                { "title": "How to Catch Sea Urchins", "url": "https://www.youtube.com/embed/PltM_OCkFO0", "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg", "description": "A sea urchin diver demonstrates his daily routine." },
-                { "title": "These Men are Obsessed with Collecting JAWS Memorabilia!", "url": "https://www.youtube.com/embed/6uj3mfrVFB8", "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg", "description": "Collectors share their passion for Jaws memorabilia and their community." },
-                { "title": "Modern Milkman", "url": "https://www.youtube.com/embed/T1H2daO8Ksg", "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg", "description": "A milkman discusses his unique job.," },
-                { "title": "When Christmas was Banned in Boston!", "url": "https://www.youtube.com/embed/EF2buhdTjuk", "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg", "description": "A historical look at when Christmas celebrations were banned in Boston." },
-                { "title": "History of the LL Bean boots", "url": "https://www.youtube.com/embed/E8xiV8pCn5o", "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg", "description": "A historical look at the iconic LL Bean boots." },
-                { "title": "The Alcestis Machine", "url": "https://www.youtube.com/embed/Apa3qBNK2tw", "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg", "description": "From The Alcestis Machine by Carolyn Oliver." }
-            ];
+            // --- Documentary Videos (Empty list, content moved to Archive) ---
+            const documentaryVideos = [];
 
-            // --- Films Videos (Descriptions reverted) ---
+            // --- Films Videos (Removed "Dave's Awesome Video Resume" and "Northern Florida Spelunkers") ---
             const filmVideos = [
-                
             {
                 "title": "Life After Leukemia",
                 "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
@@ -432,12 +406,6 @@
                 "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
                 "description": "Mischief, Mayhem, Dinosaur Raincoats."
             },
-                {
-                "title": "Dave's Awesome Video Resume",
-                "url": "https://www.youtube.com/embed/omh62ob6Qy4",
-                "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
-                "description": "Dave Heatherington presents a video resume highlighting his motivation and skills."
-            },
             {
                 "title": "D.A.V.E.",
                 "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
@@ -449,18 +417,6 @@
                 "url": "https://www.youtube.com/embed/lVekJ19DEQw",
                 "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
                 "description": "The story of Porkins, a hero in the fight against the Empire."
-            },
-            {
-                "title": "Northern Florida Spelunkers",
-                "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
-                "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
-                "description": "Job interview, Spelunker, Crazed movie director"
-            },
-                {
-                "title": "Dave's Awesome Video Resume",
-                "url": "https://www.youtube.com/embed/omh62ob6Qy4",
-                "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
-                "description": "How not to land a job"
             },
             {
                 "title": "Gimme That Shot | The Charms",
@@ -516,9 +472,9 @@
                 }
             ];
 
-            // --- Past Work Videos (Descriptions reverted) ---
+            // --- Past Work Videos (Archive) ---
             const pastWorkVideos = [
-            // Videos moved from the "Recent" section (previous request)
+            // Original Archive videos (21 items)
             {
                 "title": "Easy Trouble",
                 "url": "https://www.youtube.com/embed/gO8FalkbyRg",
@@ -543,7 +499,6 @@
                 "poster": "https://i.ytimg.com/vi/_EJ0LlB35ds/hqdefault.jpg",
                 "description": "Neil explains factors changing Earth's rotation speed."
             },
-            // Original Past Work Videos
                 {
                 "title": "Neil Reacts to Science TikToks",
                 "url": "https://www.youtube.com/embed/3i59t2i7lhM",
@@ -768,13 +723,35 @@
                 url: 'https://www.youtube.com/embed/rlY998kyFB4',
                 poster: 'https://i.ytimg.com/vi/rlY998kyFB4/hqdefault.jpg',
                 description: 'Directed by Mike Pecci'
-            }
+            },
+            // --- MOVED TO END: From Films (2 items) ---
+            {
+                "title": "Northern Florida Spelunkers",
+                "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
+                "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
+                "description": "Job interview, Spelunker, Crazed movie director"
+            },
+            {
+                "title": "Dave's Awesome Video Resume",
+                "url": "https://www.youtube.com/embed/omh62ob6Qy4",
+                "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
+                "description": "How not to land a job"
+            },
+            // --- MOVED TO END: From Documentary (9 items) ---
+            { "title": "The Soul Patrol", "url": "https://www.youtube.com/embed/DNu1aD0on8k", "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg", "description": "A retired police officer discusses his work in an all-Black police unit." },
+            { "title": "Create the Ultimate Zombie!", "url": "https://www.youtube.com/embed/ngAUJC6ujBI", "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg", "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects." },
+            { "title": "Growing up with the Sweet Science", "url": "https://www.youtube.com/embed/JB-2a5IFE0Q", "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg", "description": "Ken Casey and other on the lessons learned through boxing." },
+            { "title": "How to Catch Sea Urchins", "url": "https://www.youtube.com/embed/PltM_OCkFO0", "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg", "description": "A sea urchin diver demonstrates his daily routine." },
+            { "title": "These Men are Obsessed with Collecting JAWS Memorabilia!", "url": "https://www.youtube.com/embed/6uj3mfrVFB8", "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg", "description": "Collectors share their passion for Jaws memorabilia and their community." },
+            { "title": "Modern Milkman", "url": "https://www.youtube.com/embed/T1H2daO8Ksg", "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg", "description": "A milkman discusses his unique job.," },
+            { "title": "When Christmas was Banned in Boston!", "url": "https://www.youtube.com/embed/EF2buhdTjuk", "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg", "description": "A historical look at when Christmas celebrations were banned in Boston." },
+            { "title": "History of the LL Bean boots", "url": "https://www.youtube.com/embed/E8xiV8pCn5o", "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg", "description": "A historical look at the iconic LL Bean boots." },
+            { "title": "The Alcestis Machine", "url": "https://www.youtube.com/embed/Apa3qBNK2tw", "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg", "description": "From The Alcestis Machine by Carolyn Oliver." }
                 ];
 
             
             /* * =========================================================================
             * IMAGE GALLERY DATA SECTION
-            * Descriptions reverted to empty strings.
             * =========================================================================
             */
 
@@ -1010,10 +987,12 @@
             const filmsLeftBtn = document.getElementById('films-left-btn');
             const filmsRightBtn = document.getElementById('films-right-btn');
             
-            // NEW DOCUMENTARY VARIABLES
+            // Removed documentary-related variables since the section was removed
+            /*
             const documentaryGallery = document.getElementById('documentary-gallery');
             const documentaryLeftBtn = document.getElementById('documentary-left-btn');
             const documentaryRightBtn = document.getElementById('documentary-right-btn');
+            */
 
             const editingGallery = document.getElementById('editing-gallery');
             const editingLeftBtn = document.getElementById('editing-left-btn');
@@ -1035,20 +1014,24 @@
                 galleryElement.innerHTML = '';
                 items.forEach(item => {
                     const card = document.createElement('div');
-                    // Reverted hover scale effect
+                    // Retained fixed width class (horizontal-gallery-item) which is part of the look and feel
                     card.className = "horizontal-gallery-item bg-white rounded-lg shadow-lg overflow-hidden flex-shrink-0 cursor-pointer";
                     
                     if (isVideo) {
                         card.innerHTML = `
                             <div class="relative aspect-video">
                                 <img src="${item.poster}" 
-                                     alt="Video Thumbnail for: ${item.title}" 
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-t-lg">
-                                <!-- Removed visible play button SVG -->
+                                        alt="Video Thumbnail for: ${item.title}" 
+                                        loading="lazy"
+                                        class="w-full h-full object-cover rounded-t-lg">
+                                <!-- Play button overlay for UX, centered, always visible -->
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-100 transition-opacity duration-300">
+                                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
                             </div>
                             <div class="p-4">
-                                <!-- FONT SIZE INCREASE: text-xl -> text-2xl -->
                                 <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
                                 <p class="text-sm text-gray-700">${item.description}</p>
                             </div>
@@ -1059,12 +1042,11 @@
                             card.innerHTML = `
                                 <div class="relative aspect-video">
                                     <img src="${item.url}" 
-                                         alt="Photography: ${item.title}" 
-                                         loading="lazy"
-                                         class="w-full h-full object-cover rounded-t-lg">
+                                            alt="Photography: ${item.title}" 
+                                            loading="lazy"
+                                            class="w-full h-full object-cover rounded-t-lg">
                                 </div>
                                 <div class="p-4">
-                                    <!-- FONT SIZE INCREASE: text-xl -> text-2xl -->
                                     <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
                                     <p class="text-sm text-gray-700">${item.description}</p>
                                 </div>
@@ -1077,16 +1059,18 @@
 
             function setupGalleryNavigation(leftBtn, rightBtn, gallery) {
                 leftBtn.addEventListener('click', () => {
-                    gallery.scrollBy({ left: -320, behavior: 'smooth' });
+                    // Scroll amount adjusted to reliably move by one card width + margin (300 + 20)
+                    const scrollAmount = 320;
+                    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
                 });
 
                 rightBtn.addEventListener('click', () => {
-                    gallery.scrollBy({ left: 320, behavior: 'smooth' });
+                    const scrollAmount = 320;
+                    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
                 });
             }
 
-            // Setup all gallery navigations
-            setupGalleryNavigation(documentaryLeftBtn, documentaryRightBtn, documentaryGallery);
+            // Setup all gallery navigations (Removed documentary setup)
             setupGalleryNavigation(filmsLeftBtn, filmsRightBtn, filmsGallery);
             setupGalleryNavigation(editingLeftBtn, editingRightBtn, editingGallery);
             setupGalleryNavigation(pastWorkLeftBtn, pastWorkRightBtn, pastWorkGallery);
@@ -1094,8 +1078,8 @@
 
 
             populateHorizontalGallery(filmsGallery, filmVideos);
-            // Populate new documentary section
-            populateHorizontalGallery(documentaryGallery, documentaryVideos);
+            // Removed documentary gallery population
+            // populateHorizontalGallery(documentaryGallery, documentaryVideos); 
             populateHorizontalGallery(editingGallery, editingVideos);
             populateHorizontalGallery(pastWorkGallery, pastWorkVideos);
             // Populate image gallery (false flag indicates image, not video)
@@ -1125,12 +1109,12 @@
                         // Handle image click
                         const imageElement = document.createElement('img');
                         imageElement.src = itemUrl;
-                        // Reverted alt text to original behavior for images
                         imageElement.alt = card.querySelector('h3').textContent;
-                        imageElement.className = 'max-w-full max-h-screen';
+                        // Max-h-screen-lg ensures the image fits better within typical phone/tablet screens
+                        imageElement.className = 'max-w-full max-h-screen-lg object-contain'; 
                         
                         const imageContainer = document.createElement('div');
-                        imageContainer.className = 'flex justify-center items-center';
+                        imageContainer.className = 'flex justify-center items-center w-full h-full p-4';
                         imageContainer.appendChild(imageElement);
                         
                         openLightbox(imageContainer);
@@ -1159,7 +1143,9 @@
 
             lightboxCloseBtn.addEventListener('click', closeLightbox);
             lightbox.addEventListener('click', (e) => {
-                if (e.target === lightbox) {
+                // Closes lightbox if the user clicks the dark background but not the content window
+                const lightboxWindow = lightbox.querySelector('.relative.w-full');
+                if (e.target === lightbox || !lightboxWindow.contains(e.target)) {
                     closeLightbox();
                 }
             });
@@ -1167,9 +1153,17 @@
             document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function (e) {
                     e.preventDefault();
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
+                    // Scrolls to element, adjusting for fixed header height
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const headerHeight = document.querySelector('header').offsetHeight;
+
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - headerHeight - 10, // Added slight offset
+                            behavior: 'smooth'
+                        });
+                    }
                 });
             });
         });

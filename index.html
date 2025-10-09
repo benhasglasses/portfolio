@@ -24,7 +24,6 @@
     <meta name="twitter:title" content="Filmmaker, Editor, & Producer Portfolio | Benjamin Oliver">
     <meta name="twitter:description" content="View narrative films, documentary features, editing reels, and commercial work from professional filmmaker Benjamin Oliver.">
 
-
     <!-- PERFORMANCE OPTIMIZATION (Preconnecting to external hosts) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -376,7 +375,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* * =========================================================================
-            * VIDEO DATA SECTION
+            * VIDEO DATA SECTION (FIXED SYNTAX ERRORS)
             * =========================================================================
             */
             
@@ -386,7 +385,7 @@
             // --- Documentary Videos (Empty list, content moved to Archive) ---
             const documentaryVideos = [];
 
-            // --- Films Videos (Removed "Dave's Awesome Video Resume" and "Northern Florida Spelunkers") ---
+            // --- Films Videos ---
             const filmVideos = [
             {
                 "title": "Life After Leukemia",
@@ -493,95 +492,96 @@
                 "poster": "https://i.ytimg.com/vi/zXF9QAkdt4c/hqdefault.jpg",
                 "description": "This video explores the concept of a space elevator for reaching orbit."
             },
-                {
+            {
                 "title": "Does Size Really Matter? (In Physics)",
                 "url": "https://www.youtube.com/embed/jdTRWxafbGk",
                 "poster": "https://i.ytimg.com/vi/jdTRWxafbGk/hqdefault.jpg",
                 "description": "Neil discusses how physics impacts life forms of different sizes."
-                },
-                {
+            },
+            {
                 "title": "Neil's Most Obscure Explainer",
                 "url": "https://www.youtube.com/embed/TjLxK5vRDs0",
                 "poster": "https://i.ytimg.com/vi/TjLxK5vRDs0/hqdefault.jpg",
                 "description": "This episode delves into harmonic motion in physics."
-                },
-                {
+            },
+            {
                 "title": "On Being Wrong",
                 "url": "https://www.youtube.com/embed/ua-eXgUQZ8Y",
                 "poster": "https://i.ytimg.com/vi/ua-eXgUQZ8Y/hqdefault.jpg",
                 "description": "Neil reflects on being wrong in science and the importance of correction."
-                },
-                {
+            },
+            {
                 "title": "How to Travel Anywhere On Earth in 45 Minutes",
                 "url": "https://www.youtube.com/embed/CfNWYGHMvcY",
                 "poster": "https://i.ytimg.com/vi/CfNWYGHMvcY/hqdefault.jpg",
                 "description": "This explainer discusses theoretical 'gravity trains' for fast Earth travel."
-                },
-                {
+            },
+            {
                 "title": "The Discovery That Changed the Universe",
                 "url": "https://www.youtube.com/embed/5vBpqY8PYsA",
                 "poster": "https://i.ytimg.com/vi/5vBpqY8PYsA/hqdefault.jpg",
                 "description": "Neil celebrates Edwin Hubble's universe-changing discoveries."
-                },
-                {
+            },
+            {
                 "title": "Is It A Comet or Alien Technology?",
                 "url": "https://www.youtube.com/embed/FsyzVoIuUGU",
                 "poster": "https://i.ytimg.com/vi/FsyzVoIuUGU/hqdefault.jpg",
                 "description": "Neil discusses anomalous interstellar objects and the 'alien of the gaps' phenomenon."
-                },
-                {
+            },
+            {
                 "title": "Master of Orion - Voice Actors Trailer",
                 "url": "https://www.youtube.com/embed/mdFCfmng2Yo",
                 "poster": "https://i.ytimg.com/vi/mdFCfmng2Yo/hqdefault.jpg",
                 "description": "Voice actors discuss their roles in Master of Orion."
-                },
-                {
+            },
+            {
                 "title": "Behind the Scenes with Phil LaMarr | Samurai Jack: Battle Through Time | Adult Swim Games",
                 "url": "https://www.youtube.com/embed/VjeK8iCEk5M",
                 "poster": "https://i.ytimg.com/vi/VjeK8iCEk5M/hqdefault.jpg",
                 "description": "Phil LaMarr discusses voicing Samurai Jack."
-                },
-                {
+            },
+            {
                 "title": "Jack’s Friends | Samurai Jack: Battle Through Time | Adult Swim Games",
                 "url": "https://www.youtube.com/embed/fmkCGU8GpkE",
                 "poster": "https://i.ytimg.com/vi/fmkCGU8GpkE/hqdefault.jpg",
                 "description": "Voice actors discuss Jack's allies."
-                },
-                {
+            },
+            {
                 "title": "Jack’s Enemies | Samurai Jack: Battle Through Time | Adult Swim Games",
                 "url": "https://www.youtube.com/embed/vLbfDlgu6SM",
                 "poster": "https://i.ytimg.com/vi/vLbfDlgu6SM/hqdefault.jpg",
                 "description": "Voice actors discuss Jack's enemies."
-                },
-                {
+            },
+            {
                 "title": "Behind the Voice - Batman",
                 "url": "https://www.youtube.com/embed/t2EKyh4869o",
                 "poster": "https://i.ytimg.com/vi/t2EKyh4869o/hqdefault.jpg",
                 "description": "Kevin Conroy discusses playing Batman in the game."
-                },
-                {
+            },
+            {
                 "title": "Behind the Voice - Carmine Falcone",
                 "url": "https://www.youtube.com/embed/sjH7eg6yQnk",
                 "poster": "https://i.ytimg.com/vi/sjH7eg6yQnk/hqdefault.jpg",
                 "description": "John Polson discusses voicing Carmine Falcone."
-                },
-                {
+            },
+            {
                 "title": "Behind the Voice: Frederick Theodore Posenor III as Krypto",
                 "url": "https://www.youtube.com/embed/LHhN9K7uddA",
                 "poster": "https://i.ytimg.com/vi/LHhN9K7uddA/hqdefault.jpg",
                 "description": "Frederick Theodore Posenor III discusses voicing Krypto."
-                },
-                {
+            },
+            {
                 "title": "Behind the Voice: Michael Dorn as Swamp Thing",
                 "url": "https://www.youtube.com/embed/ym8VJ2jzr-8",
                 "poster": "https://i.ytimg.com/vi/ym8VJ2jzr-8/hqdefault.jpg",
                 "description": "Michael Dorn discusses voicing Swamp Thing."
-                },
-            { "title": "What is an MRE?",
-             "url": "https://www.youtube.com/embed/jau3dQwN2IE",
-             "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg",
-             "description": "MREs (Meal, Ready-to-Eat) and their continuous improvement." },
-            { "title": "The Man Behind Your Favorite Local Ads",
+            },
+            { 
+                "title": "What is an MRE?",
+                "url": "https://www.youtube.com/embed/jau3dQwN2IE",
+                "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg",
+                "description": "MREs (Meal, Ready-to-Eat) and their continuous improvement."
+            },
             { "title": "How to re-create the JAWS dolly", "url": "https://www.youtube.com/embed/J218Oi8PGlw", "poster": "https://i.ytimg.com/vi/J218Oi8PGlw/hqdefault.jpg", "description": "Beecher Cotton recreates the iconic 'dolly zoom' shot from the movie Jaws." },
             { "title": "A brief history of the Salem Witch Trials", "url": "https://www.youtube.com/embed/C7M2nfCstng", "poster": "https://i.ytimg.com/vi/C7M2nfCstng/hqdefault.jpg", "description": "A quick overview of the Salem Witch Trials and their tragic events." },
             {
@@ -605,11 +605,11 @@
             { "title": "When Christmas was Banned in Boston!", "url": "https://www.youtube.com/embed/EF2buhdTjuk", "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg", "description": "A historical look at when Christmas celebrations were banned in Boston." },
             { "title": "History of the LL Bean boots", "url": "https://www.youtube.com/embed/E8xiV8pCn5o", "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg", "description": "A historical look at the iconic LL Bean boots." },
             { "title": "The Alcestis Machine", "url": "https://www.youtube.com/embed/Apa3qBNK2tw", "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg", "description": "From The Alcestis Machine by Carolyn Oliver." }
-                ];
+            ];
 
             
             /* * =========================================================================
-            * IMAGE GALLERY DATA SECTION
+            * IMAGE GALLERY DATA SECTION (FIXED DATA TYPE ERROR)
             * =========================================================================
             */
 
@@ -719,7 +719,6 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/21.jpg",
                     description: ""
                 },
-
                 {
                     title: "Thoughts",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/23.jpg",
@@ -730,7 +729,7 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/40.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "Feel the Bern",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/22.jpg",
                     description: ""
@@ -745,7 +744,7 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/26.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "blues",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/24.jpg",
                     description: ""
@@ -760,11 +759,13 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/28.jpg",
                     description: ""
                 },
+                /* Retained this fix for image gallery which erroneously contained a video URL */
                 {
                     title: "Shipping up",
-                    url: "https://www.youtube.com/embed/-YVujcWxrdM",
-                    description: ""
+                    url: "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up", // Replaced video URL
+                    description: "Placeholder for a photo."
                 },
+                /* End retained fix */
                 {
                     title: "to Boston",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/30.jpg",
@@ -805,17 +806,17 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/41.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "I voted for the maniac.",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/42.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "Not anymore..",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/43.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "The shots woke me up.",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/45.jpg",
                     description: ""
@@ -825,12 +826,12 @@
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/governmentcenter.png",
                     description: ""
                 },
-                    {
+                {
                     title: "2016 NH",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/nh16.jpg",
                     description: ""
                 },
-                    {
+                {
                     title: "X Files in MA",
                     url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/xfiles.gif",
                     description: ""
@@ -1003,7 +1004,7 @@
             lightbox.addEventListener('click', (e) => {
                 // Closes lightbox if the user clicks the dark background but not the content window
                 const lightboxWindow = lightbox.querySelector('.relative.w-full');
-                if (e.target === lightbox || !lightboxWindow.contains(e.target)) {
+                if (e.target === lightbox || (lightboxWindow && !lightboxWindow.contains(e.target))) {
                     closeLightbox();
                 }
             });

@@ -33,10 +33,10 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        /* FONT HOSTING: Custom Font Face Rule */
+        /* FONT HOSTING: Custom Font Face Rule - NOW USING JSDELIVR CDN FOR STABILITY */
         @font-face {
             font-family: 'TAYBirdie';
-            src: url('https://raw.githubusercontent.com/benhasglasses/portfolio/main/TAYBirdie.otf') format('opentype');
+            src: url('https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/TAYBirdie.otf') format('opentype');
             font-weight: 400;
             font-style: normal;
         }
@@ -200,7 +200,7 @@
         "Cinematography",
         "Video Production"
       ],
-      "image": "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/ben.JPG",
+      "image": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG",
       "sameAs": [
         "https://www.youtube.com/benhasglasses", 
         "https://linkedin.com/in/YourLinkedIn",
@@ -230,7 +230,8 @@
         <section id="about" class="py-16">
             <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
                 <div class="w-full md:w-1/2 flex justify-center">
-                    <img src="https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/ben.JPG" 
+                    <!-- FIXED: Using jsDelivr CDN for stable GitHub image loading -->
+                    <img src="https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG" 
                             alt="Professional headshot of Benjamin Oliver, Filmmaker, wearing glasses." 
                             loading="lazy"
                             class="rounded-lg shadow-lg max-w-full h-auto">
@@ -375,7 +376,7 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* * =========================================================================
-            * VIDEO DATA SECTION (FIXED SYNTAX ERRORS)
+            * VIDEO DATA SECTION
             * =========================================================================
             */
             
@@ -616,147 +617,147 @@
             const galleryImages = [
                 {
                     title: "Madrid",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/01.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
                     description: ""
                 },
                 {
                     title: "Alhambra",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/02.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
                     description: ""
                 },
                 {
                     title: "Watercolor",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/03.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
                     description: ""
                 },
                 {
                     title: "Bethel",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/04.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
                     description: ""
                 },
                 {
                     title: "Tractor",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/05.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
                     description: ""
                 },
                 {
                     title: "Escorial",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/06.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
                     description: ""
                 },
                 {
                     title: "Cinema",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/07.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
                     description: ""
                 },
                 {
                     title: "paints",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/08.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
                     description: ""
                 },
                 {
                     title: "Mount Auburn",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/09.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
                     description: ""
                 },
                 {
                     title: "Ipswich",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/10.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
                     description: ""
                 },
                 {
                     title: "Blue",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/11.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
                     description: ""
                 },
                 {
                     title: "Iceland",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/12.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
                     description: ""
                 },
                 {
                     title: "Light",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/13.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
                     description: ""
                 },
                 {
                     title: "Tectonic",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/14.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
                     description: ""
                 },
                 {
                     title: "Sky",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/15.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
                     description: ""
                 },
                 {
                     title: "Tomatillo",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/16.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
                     description: ""
                 },
                 {
                     title: "Purple",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/17.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
                     description: ""
                 },
                 {
                     title: "Vocal",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/18.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
                     description: ""
                 },
                 {
                     title: "Moon",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/19.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
                     description: ""
                 },
                 {
                     title: "Zakim",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/20.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
                     description: ""
                 },
                 {
                     title: "Converse",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/21.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
                     description: ""
                 },
                 {
                     title: "Thoughts",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/23.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
                     description: ""
                 },
                 {
                     title: "Onward",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/40.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
                     description: ""
                 },
                 {
                     title: "Feel the Bern",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/22.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
                     description: ""
                 },
                 {
                     title: "Bernie",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/25.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
                     description: ""
                 },
                 {
                     title: "Bernie 2",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/26.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
                     description: ""
                 },
                 {
                     title: "blues",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/24.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
                     description: ""
                 },
                 {
                     title: "Ken",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/27.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
                     description: ""
                 },
                 {
                     title: "Dropkick",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/28.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
                     description: ""
                 },
                 /* Retained this fix for image gallery which erroneously contained a video URL */
@@ -768,72 +769,72 @@
                 /* End retained fix */
                 {
                     title: "to Boston",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/30.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
                     description: ""
                 },
                 {
                     title: "Rocky",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/32.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
                     description: ""
                 },
                 {
                     title: "Backpack",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/34.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
                     description: ""
                 },
                 {
                     title: "Autumnal",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/35.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
                     description: ""
                 },
                 {
                     title: "Snow",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/36.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
                     description: ""
                 },
                 {
                     title: "Watching",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/37.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
                     description: ""
                 },
                 {
                     title: "Fumes",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/38.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
                     description: ""
                 },
                 {
                     title: "Solidarity",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/41.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
                     description: ""
                 },
                 {
                     title: "I voted for the maniac.",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/42.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
                     description: ""
                 },
                 {
                     title: "Not anymore..",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/43.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
                     description: ""
                 },
                 {
                     title: "The shots woke me up.",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/45.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
                     description: ""
                 },
                 {
                     title: "Government Center",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/governmentcenter.png",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
                     description: ""
                 },
                 {
                     title: "2016 NH",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/nh16.jpg",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
                     description: ""
                 },
                 {
                     title: "X Files in MA",
-                    url: "https://raw.githubusercontent.com/benhasglasses/portfolio/refs/heads/main/images/xfiles.gif",
+                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
                     description: ""
                 }
             ];

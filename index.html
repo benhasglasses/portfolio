@@ -376,483 +376,646 @@
         document.addEventListener('DOMContentLoaded', () => {
 
             /* * =========================================================================
-            * VIDEO DATA SECTION
+            * CONSOLIDATED MEDIA DATA STORE (Videos and Images)
             * =========================================================================
             */
             
-            // --- Recent Work Videos (Now empty) ---
-            const recentWorkVideos = [];
+            // All content data is now consolidated here for easier management.
+            const mediaData = [
+                // --- FILMS (Work) ---
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Life After Leukemia",
+                    "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
+                    "poster": "https://i.ytimg.com/vi/Q5koayQ0X0c/hqdefault.jpg",
+                    "description": "A mockumentary about a former child actor."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Ghosts",
+                    "url": "https://www.youtube.com/embed/h4UgSNaT3WQ",
+                    "poster": "https://i.ytimg.com/vi/h4UgSNaT3WQ/hqdefault.jpg",
+                    "description": "Ghosts still follow you after all is lost."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "The Boy in the T-Rex Raincoat",
+                    "url": "https://www.youtube.com/embed/bb-9fKcFeEc",
+                    "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
+                    "description": "Mischief, Mayhem, Dinosaur Raincoats."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "D.A.V.E.",
+                    "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
+                    "poster": "https://i.ytimg.com/vi/v7o8P8UWWIU/hqdefault.jpg",
+                    "description": "A story about one man's job search."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Forgotten Firepower: The Story of Porkins",
+                    "url": "https://www.youtube.com/embed/lVekJ19DEQw",
+                    "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
+                    "description": "The story of Jek Porkins, a hero in the fight against the Empire."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Gimme That Shot | The Charms",
+                    "url": "https://www.youtube.com/embed/_jGBEFT35FA",
+                    "poster": "https://i.ytimg.com/vi/_jGBEFT35FA/hqdefault.jpg",
+                    "description": "The Charms 'Gimme That Shot'."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Memorial Day | The Midnight Creeps",
+                    "url": "https://www.youtube.com/embed/-YVujcWxrdM",
+                    "poster": "https://i.ytimg.com/vi/-YVujcWxrdM/hqdefault.jpg",
+                    "description": "The Midnight Creeps 'Memorial Day'."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "The Buffer Zone | The Sterns",
+                    "url": "https://www.youtube.com/embed/6AktaSdWX60",
+                    "poster": "https://i.ytimg.com/vi/6AktaSdWX60/hqdefault.jpg",
+                    "description": "The Sterns 'The Buffer Zone'."
+                },
 
-            // --- Documentary Videos (Empty list, content moved to Archive) ---
-            const documentaryVideos = [];
+                // --- EDITING ---
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Stanley',
+                    "url": 'https://www.youtube.com/embed/yyzRgXcAhxc',
+                    "poster": 'https://i.ytimg.com/vi/yyzRgXcAhxc/hqdefault.jpg',
+                    "description": 'Directed by Patrick McMahill"'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'The Pixiestick Incident',
+                    "url": 'https://www.youtube.com/embed/R7p71Ph9yIA',
+                    "poster": 'https://i.ytimg.com/vi/R7p71Ph9yIA/hqdefault.jpg',
+                    "description": 'Directed by Michael Henry'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Love of a Lifetime',
+                    "url": 'https://www.youtube.com/embed/BsHGDvnLtX4',
+                    "poster": 'https://i.ytimg.com/vi/BsHGDvnLtX4/hqdefault.jpg',
+                    "description": 'Directed by David J. Curtis '
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Plus 1s',
+                    "url": 'https://www.youtube.com/embed/zDEYn0xqJtQ',
+                    "poster": 'https://i.ytimg.com/vi/zDEYn0xqJtQ/hqdefault.jpg',
+                    "description": 'Directed by David J. Curtis and Katelyn Reddy'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Man of Glass',
+                    "url": 'https://www.youtube.com/embed/fxs6m2-l85k',
+                    "poster": 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
+                    "description": 'Directed by Paul Yalen'
+                },
 
-            // --- Films Videos ---
-            const filmVideos = [
-            {
-                "title": "Life After Leukemia",
-                "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
-                "poster": "https://i.ytimg.com/vi/Q5koayQ0X0c/hqdefault.jpg",
-                "description": "A mockumentary about a former child actor."
-            },
-            {
-                "title": "Ghosts",
-                "url": "https://www.youtube.com/embed/h4UgSNaT3WQ",
-                "poster": "https://i.ytimg.com/vi/h4UgSNaT3WQ/hqdefault.jpg",
-                "description": "Ghosts still follow you after all is lost."
-            },
-            {
-                "title": "The Boy in the T-Rex Raincoat",
-                "url": "https://www.youtube.com/embed/bb-9fKcFeEc",
-                "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
-                "description": "Mischief, Mayhem, Dinosaur Raincoats."
-            },
-            {
-                "title": "D.A.V.E.",
-                "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
-                "poster": "https://i.ytimg.com/vi/v7o8P8UWWIU/hqdefault.jpg",
-                "description": "A story about one man's job search."
-            },
-            {
-                "title": "Forgotten Firepower: The Story of Porkins",
-                "url": "https://www.youtube.com/embed/lVekJ19DEQw",
-                "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
-                "description": "The story of Jek Porkins, a hero in the fight against the Empire."
-            },
-            {
-                "title": "Gimme That Shot | The Charms",
-                "url": "https://www.youtube.com/embed/_jGBEFT35FA",
-                "poster": "https://i.ytimg.com/vi/_jGBEFT35FA/hqdefault.jpg",
-                "description": "The Charms 'Gimme That Shot'."
-            },
-            {
-                "title": "Memorial Day | The Midnight Creeps",
-                "url": "https://www.youtube.com/embed/-YVujcWxrdM",
-                "poster": "https://i.ytimg.com/vi/-YVujcWxrdM/hqdefault.jpg",
-                "description": "The Midnight Creeps 'Memorial Day'."
-            },
-            {
-                "title": "The Buffer Zone | The Sterns",
-                "url": "https://www.youtube.com/embed/6AktaSdWX60",
-                "poster": "https://i.ytimg.com/vi/6AktaSdWX60/hqdefault.jpg",
-                "description": "The Sterns 'The Buffer Zone'."
-            }
-            ];
-
-            // --- Editing Videos (Descriptions reverted) ---
-            const editingVideos = [
-                {  
-                title: 'Stanley',
-                url: 'https://www.youtube.com/embed/yyzRgXcAhxc',
-                poster: 'https://i.ytimg.com/vi/yyzRgXcAhxc/hqdefault.jpg',
-                description: 'Directed by Patrick McMahill"'
+                // --- ARCHIVE (Past Work) ---
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Easy Trouble",
+                    "url": "https://www.youtube.com/embed/gO8FalkbyRg",
+                    "poster": "https://i.ytimg.com/vi/gO8FalkbyRg/hqdefault.jpg",
+                    "description": "The Charms | Easy Trouble."
                 },
                 {
-                title: 'The Pixiestick Incident',
-                url: 'https://www.youtube.com/embed/R7p71Ph9yIA',
-                poster: 'https://i.ytimg.com/vi/R7p71Ph9yIA/hqdefault.jpg',
-                description: 'Directed by Michael Henry'
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Who is Detective Eldridge Haas?",
+                    "url": "https://www.youtube.com/embed/BSSyXBu4jLQ",
+                    "poster": "https://i.ytimg.com/vi/BSSyXBu4jLQ/hqdefault.jpg",
+                    "description": "From The Pixiestick Incident."
                 },
                 {
-                title: 'Love of a Lifetime',
-                url: 'https://www.youtube.com/embed/BsHGDvnLtX4',
-                poster: 'https://i.ytimg.com/vi/BsHGDvnLtX4/hqdefault.jpg',
-                description: 'Directed by David J. Curtis '
+                    "type": "video",
+                    "category": "archive",
+                    "title": "When Will We Have a Space Elevator?",
+                    "url": "https://www.youtube.com/embed/zXF9QAkdt4c",
+                    "poster": "https://i.ytimg.com/vi/zXF9QAkdt4c/hqdefault.jpg",
+                    "description": "This video explores the concept of a space elevator for reaching orbit."
                 },
                 {
-                title: 'Plus 1s',
-                url: 'https://www.youtube.com/embed/zDEYn0xqJtQ',
-                poster: 'https://i.ytimg.com/vi/zDEYn0xqJtQ/hqdefault.jpg',
-                description: 'Directed by David J. Curtis and Katelyn Reddy'
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Does Size Really Matter? (In Physics)",
+                    "url": "https://www.youtube.com/embed/jdTRWxafbGk",
+                    "poster": "https://i.ytimg.com/vi/jdTRWxafbGk/hqdefault.jpg",
+                    "description": "Neil discusses how physics impacts life forms of different sizes."
                 },
                 {
-                title: 'Man of Glass',
-                url: 'https://www.youtube.com/embed/fxs6m2-l85k',
-                poster: 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
-                description: 'Directed by Paul Yalen'
-                }
-            ];
-
-            // --- Past Work Videos (Archive) ---
-            const pastWorkVideos = [
-            // Original Archive videos (21 items)
-            {
-                "title": "Easy Trouble",
-                "url": "https://www.youtube.com/embed/gO8FalkbyRg",
-                "poster": "https://i.ytimg.com/vi/gO8FalkbyRg/hqdefault.jpg",
-                "description": "The Charms | Easy Trouble."
-            },
-            {
-                "title": "Who is Detective Eldridge Haas?",
-                "url": "https://www.youtube.com/embed/BSSyXBu4jLQ",
-                "poster": "https://i.ytimg.com/vi/BSSyXBu4jLQ/hqdefault.jpg",
-                "description": "From The Pixiestick Incident."
-            },
-            {
-                "title": "When Will We Have a Space Elevator?",
-                "url": "https://www.youtube.com/embed/zXF9QAkdt4c",
-                "poster": "https://i.ytimg.com/vi/zXF9QAkdt4c/hqdefault.jpg",
-                "description": "This video explores the concept of a space elevator for reaching orbit."
-            },
-            {
-                "title": "Does Size Really Matter? (In Physics)",
-                "url": "https://www.youtube.com/embed/jdTRWxafbGk",
-                "poster": "https://i.ytimg.com/vi/jdTRWxafbGk/hqdefault.jpg",
-                "description": "Neil discusses how physics impacts life forms of different sizes."
-            },
-            {
-                "title": "Neil's Most Obscure Explainer",
-                "url": "https://www.youtube.com/embed/TjLxK5vRDs0",
-                "poster": "https://i.ytimg.com/vi/TjLxK5vRDs0/hqdefault.jpg",
-                "description": "This episode delves into harmonic motion in physics."
-            },
-            {
-                "title": "On Being Wrong",
-                "url": "https://www.youtube.com/embed/ua-eXgUQZ8Y",
-                "poster": "https://i.ytimg.com/vi/ua-eXgUQZ8Y/hqdefault.jpg",
-                "description": "Neil reflects on being wrong in science and the importance of correction."
-            },
-            {
-                "title": "How to Travel Anywhere On Earth in 45 Minutes",
-                "url": "https://www.youtube.com/embed/CfNWYGHMvcY",
-                "poster": "https://i.ytimg.com/vi/CfNWYGHMvcY/hqdefault.jpg",
-                "description": "This explainer discusses theoretical 'gravity trains' for fast Earth travel."
-            },
-            {
-                "title": "The Discovery That Changed the Universe",
-                "url": "https://www.youtube.com/embed/5vBpqY8PYsA",
-                "poster": "https://i.ytimg.com/vi/5vBpqY8PYsA/hqdefault.jpg",
-                "description": "Neil celebrates Edwin Hubble's universe-changing discoveries."
-            },
-            {
-                "title": "Is It A Comet or Alien Technology?",
-                "url": "https://www.youtube.com/embed/FsyzVoIuUGU",
-                "poster": "https://i.ytimg.com/vi/FsyzVoIuUGU/hqdefault.jpg",
-                "description": "Neil discusses anomalous interstellar objects and the 'alien of the gaps' phenomenon."
-            },
-            {
-                "title": "Master of Orion - Voice Actors Trailer",
-                "url": "https://www.youtube.com/embed/mdFCfmng2Yo",
-                "poster": "https://i.ytimg.com/vi/mdFCfmng2Yo/hqdefault.jpg",
-                "description": "Voice actors discuss their roles in Master of Orion."
-            },
-            {
-                "title": "Behind the Scenes with Phil LaMarr | Samurai Jack: Battle Through Time | Adult Swim Games",
-                "url": "https://www.youtube.com/embed/VjeK8iCEk5M",
-                "poster": "https://i.ytimg.com/vi/VjeK8iCEk5M/hqdefault.jpg",
-                "description": "Phil LaMarr discusses voicing Samurai Jack."
-            },
-            {
-                "title": "Jack’s Friends | Samurai Jack: Battle Through Time | Adult Swim Games",
-                "url": "https://www.youtube.com/embed/fmkCGU8GpkE",
-                "poster": "https://i.ytimg.com/vi/fmkCGU8GpkE/hqdefault.jpg",
-                "description": "Voice actors discuss Jack's allies."
-            },
-            {
-                "title": "Jack’s Enemies | Samurai Jack: Battle Through Time | Adult Swim Games",
-                "url": "https://www.youtube.com/embed/vLbfDlgu6SM",
-                "poster": "https://i.ytimg.com/vi/vLbfDlgu6SM/hqdefault.jpg",
-                "description": "Voice actors discuss Jack's enemies."
-            },
-            {
-                "title": "Behind the Voice - Batman",
-                "url": "https://www.youtube.com/embed/t2EKyh4869o",
-                "poster": "https://i.ytimg.com/vi/t2EKyh4869o/hqdefault.jpg",
-                "description": "Kevin Conroy discusses playing Batman in the game."
-            },
-            {
-                "title": "Behind the Voice - Carmine Falcone",
-                "url": "https://www.youtube.com/embed/sjH7eg6yQnk",
-                "poster": "https://i.ytimg.com/vi/sjH7eg6yQnk/hqdefault.jpg",
-                "description": "John Polson discusses voicing Carmine Falcone."
-            },
-            {
-                "title": "Behind the Voice: Frederick Theodore Posenor III as Krypto",
-                "url": "https://www.youtube.com/embed/LHhN9K7uddA",
-                "poster": "https://i.ytimg.com/vi/LHhN9K7uddA/hqdefault.jpg",
-                "description": "Frederick Theodore Posenor III discusses voicing Krypto."
-            },
-            {
-                "title": "Behind the Voice: Michael Dorn as Swamp Thing",
-                "url": "https://www.youtube.com/embed/ym8VJ2jzr-8",
-                "poster": "https://i.ytimg.com/vi/ym8VJ2jzr-8/hqdefault.jpg",
-                "description": "Michael Dorn discusses voicing Swamp Thing."
-            },
-            { 
-                "title": "What is an MRE?",
-                "url": "https://www.youtube.com/embed/jau3dQwN2IE",
-                "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg",
-                "description": "MREs (Meal, Ready-to-Eat) and their continuous improvement."
-            },
-            { "title": "How to re-create the JAWS dolly", "url": "https://www.youtube.com/embed/J218Oi8PGlw", "poster": "https://i.ytimg.com/vi/J218Oi8PGlw/hqdefault.jpg", "description": "Beecher Cotton recreates the iconic 'dolly zoom' shot from the movie Jaws." },
-            { "title": "A brief history of the Salem Witch Trials", "url": "https://www.youtube.com/embed/C7M2nfCstng", "poster": "https://i.ytimg.com/vi/C7M2nfCstng/hqdefault.jpg", "description": "A quick overview of the Salem Witch Trials and their tragic events." },
-            {
-                "title": "Northern Florida Spelunkers",
-                "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
-                "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
-                "description": "Job interview, Spelunker, Crazed movie director"
-            },
-            {
-                "title": "Dave's Awesome Video Resume",
-                "url": "https://www.youtube.com/embed/omh62ob6Qy4",
-                "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
-                "description": "How not to land a job"
-            },
-            { "title": "The Soul Patrol", "url": "https://www.youtube.com/embed/DNu1aD0on8k", "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg", "description": "A retired police officer discusses his work in an all-Black police unit." },
-            { "title": "Create the Ultimate Zombie!", "url": "https://www.youtube.com/embed/ngAUJC6ujBI", "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg", "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects." },
-            { "title": "Growing up with the Sweet Science", "url": "https://www.youtube.com/embed/JB-2a5IFE0Q", "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg", "description": "Ken Casey and other on the lessons learned through boxing." },
-            { "title": "How to Catch Sea Urchins", "url": "https://www.youtube.com/embed/PltM_OCkFO0", "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg", "description": "A sea urchin diver demonstrates his daily routine." },
-            { "title": "These Men are Obsessed with Collecting JAWS Memorabilia!", "url": "https://www.youtube.com/embed/6uj3mfrVFB8", "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg", "description": "Collectors share their passion for Jaws memorabilia and their community." },
-            { "title": "Modern Milkman", "url": "https://www.youtube.com/embed/T1H2daO8Ksg", "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg", "description": "A milkman discusses his unique job.," },
-            { "title": "When Christmas was Banned in Boston!", "url": "https://www.youtube.com/embed/EF2buhdTjuk", "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg", "description": "A historical look at when Christmas celebrations were banned in Boston." },
-            { "title": "History of the LL Bean boots", "url": "https://www.youtube.com/embed/E8xiV8pCn5o", "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg", "description": "A historical look at the iconic LL Bean boots." },
-            { "title": "The Alcestis Machine", "url": "https://www.youtube.com/embed/Apa3qBNK2tw", "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg", "description": "From The Alcestis Machine by Carolyn Oliver." }
-            ];
-
-            
-            /* * =========================================================================
-            * IMAGE GALLERY DATA SECTION (FIXED DATA TYPE ERROR)
-            * =========================================================================
-            */
-
-            const galleryImages = [
-                {
-                    title: "Madrid",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Neil's Most Obscure Explainer",
+                    "url": "https://www.youtube.com/embed/TjLxK5vRDs0",
+                    "poster": "https://i.ytimg.com/vi/TjLxK5vRDs0/hqdefault.jpg",
+                    "description": "This episode delves into harmonic motion in physics."
                 },
                 {
-                    title: "Alhambra",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "On Being Wrong",
+                    "url": "https://www.youtube.com/embed/ua-eXgUQZ8Y",
+                    "poster": "https://i.ytimg.com/vi/ua-eXgUQZ8Y/hqdefault.jpg",
+                    "description": "Neil reflects on being wrong in science and the importance of correction."
                 },
                 {
-                    title: "Watercolor",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to Travel Anywhere On Earth in 45 Minutes",
+                    "url": "https://www.youtube.com/embed/CfNWYGHMvcY",
+                    "poster": "https://i.ytimg.com/vi/CfNWYGHMvcY/hqdefault.jpg",
+                    "description": "This explainer discusses theoretical 'gravity trains' for fast Earth travel."
                 },
                 {
-                    title: "Bethel",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Discovery That Changed the Universe",
+                    "url": "https://www.youtube.com/embed/5vBpqY8PYsA",
+                    "poster": "https://i.ytimg.com/vi/5vBpqY8PYsA/hqdefault.jpg",
+                    "description": "Neil celebrates Edwin Hubble's universe-changing discoveries."
                 },
                 {
-                    title: "Tractor",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Is It A Comet or Alien Technology?",
+                    "url": "https://www.youtube.com/embed/FsyzVoIuUGU",
+                    "poster": "https://i.ytimg.com/vi/FsyzVoIuUGU/hqdefault.jpg",
+                    "description": "Neil discusses anomalous interstellar objects and the 'alien of the gaps' phenomenon."
                 },
                 {
-                    title: "Escorial",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Master of Orion - Voice Actors Trailer",
+                    "url": "https://www.youtube.com/embed/mdFCfmng2Yo",
+                    "poster": "https://i.ytimg.com/vi/mdFCfmng2Yo/hqdefault.jpg",
+                    "description": "Voice actors discuss their roles in Master of Orion."
                 },
                 {
-                    title: "Cinema",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Scenes with Phil LaMarr | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/VjeK8iCEk5M",
+                    "poster": "https://i.ytimg.com/vi/VjeK8iCEk5M/hqdefault.jpg",
+                    "description": "Phil LaMarr discusses voicing Samurai Jack."
                 },
                 {
-                    title: "paints",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Jack’s Friends | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/fmkCGU8GpkE",
+                    "poster": "https://i.ytimg.com/vi/fmkCGU8GpkE/hqdefault.jpg",
+                    "description": "Voice actors discuss Jack's allies."
                 },
                 {
-                    title: "Mount Auburn",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Jack’s Enemies | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/vLbfDlgu6SM",
+                    "poster": "https://i.ytimg.com/vi/vLbfDlgu6SM/hqdefault.jpg",
+                    "description": "Voice actors discuss Jack's enemies."
                 },
                 {
-                    title: "Ipswich",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice - Batman",
+                    "url": "https://www.youtube.com/embed/t2EKyh4869o",
+                    "poster": "https://i.ytimg.com/vi/t2EKyh4869o/hqdefault.jpg",
+                    "description": "Kevin Conroy discusses playing Batman in the game."
                 },
                 {
-                    title: "Blue",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice - Carmine Falcone",
+                    "url": "https://www.youtube.com/embed/sjH7eg6yQnk",
+                    "poster": "https://i.ytimg.com/vi/sjH7eg6yQnk/hqdefault.jpg",
+                    "description": "John Polson discusses voicing Carmine Falcone."
                 },
                 {
-                    title: "Iceland",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice: Frederick Theodore Posenor III as Krypto",
+                    "url": "https://www.youtube.com/embed/LHhN9K7uddA",
+                    "poster": "https://i.ytimg.com/vi/LHhN9K7uddA/hqdefault.jpg",
+                    "description": "Frederick Theodore Posenor III discusses voicing Krypto."
                 },
                 {
-                    title: "Light",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice: Michael Dorn as Swamp Thing",
+                    "url": "https://www.youtube.com/embed/ym8VJ2jzr-8",
+                    "poster": "https://i.ytimg.com/vi/ym8VJ2jzr-8/hqdefault.jpg",
+                    "description": "Michael Dorn discusses voicing Swamp Thing."
                 },
                 {
-                    title: "Tectonic",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "What is an MRE?",
+                    "url": "https://www.youtube.com/embed/jau3dQwN2IE",
+                    "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg",
+                    "description": "MREs (Meal, Ready-to-Eat) and their continuous improvement."
                 },
                 {
-                    title: "Sky",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to re-create the JAWS dolly",
+                    "url": "https://www.youtube.com/embed/J218Oi8PGlw",
+                    "poster": "https://i.ytimg.com/vi/J218Oi8PGlw/hqdefault.jpg",
+                    "description": "Beecher Cotton recreates the iconic 'dolly zoom' shot from the movie Jaws."
                 },
                 {
-                    title: "Tomatillo",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "A brief history of the Salem Witch Trials",
+                    "url": "https://www.youtube.com/embed/C7M2nfCstng",
+                    "poster": "https://i.ytimg.com/vi/C7M2nfCstng/hqdefault.jpg",
+                    "description": "A quick overview of the Salem Witch Trials and their tragic events."
                 },
                 {
-                    title: "Purple",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Northern Florida Spelunkers",
+                    "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
+                    "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
+                    "description": "Job interview, Spelunker, Crazed movie director"
                 },
                 {
-                    title: "Vocal",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Dave's Awesome Video Resume",
+                    "url": "https://www.youtube.com/embed/omh62ob6Qy4",
+                    "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
+                    "description": "How not to land a job"
                 },
                 {
-                    title: "Moon",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Soul Patrol",
+                    "url": "https://www.youtube.com/embed/DNu1aD0on8k",
+                    "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg",
+                    "description": "A retired police officer discusses his work in an all-Black police unit."
                 },
                 {
-                    title: "Zakim",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Create the Ultimate Zombie!",
+                    "url": "https://www.youtube.com/embed/ngAUJC6ujBI",
+                    "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg",
+                    "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects."
                 },
                 {
-                    title: "Converse",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Growing up with the Sweet Science",
+                    "url": "https://www.youtube.com/embed/JB-2a5IFE0Q",
+                    "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg",
+                    "description": "Ken Casey and other on the lessons learned through boxing."
                 },
                 {
-                    title: "Thoughts",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to Catch Sea Urchins",
+                    "url": "https://www.youtube.com/embed/PltM_OCkFO0",
+                    "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg",
+                    "description": "A sea urchin diver demonstrates his daily routine."
                 },
                 {
-                    title: "Onward",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "These Men are Obsessed with Collecting JAWS Memorabilia!",
+                    "url": "https://www.youtube.com/embed/6uj3mfrVFB8",
+                    "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg",
+                    "description": "Collectors share their passion for Jaws memorabilia and their community."
                 },
                 {
-                    title: "Feel the Bern",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Modern Milkman",
+                    "url": "https://www.youtube.com/embed/T1H2daO8Ksg",
+                    "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg",
+                    "description": "A milkman discusses his unique job.,"
                 },
                 {
-                    title: "Bernie",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "When Christmas was Banned in Boston!",
+                    "url": "https://www.youtube.com/embed/EF2buhdTjuk",
+                    "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg",
+                    "description": "A historical look at when Christmas celebrations were banned in Boston."
                 },
                 {
-                    title: "Bernie 2",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "History of the LL Bean boots",
+                    "url": "https://www.youtube.com/embed/E8xiV8pCn5o",
+                    "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg",
+                    "description": "A historical look at the iconic LL Bean boots."
                 },
                 {
-                    title: "blues",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
-                    description: ""
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Alcestis Machine",
+                    "url": "https://www.youtube.com/embed/Apa3qBNK2tw",
+                    "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg",
+                    "description": "From The Alcestis Machine by Carolyn Oliver."
+                },
+                
+                // --- IMAGES (Photo Gallery) ---
+                {
+                    "type": "image",
+                    "title": "Madrid",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Ken",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Alhambra",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Dropkick",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
-                    description: ""
-                },
-                /* Retained this fix for image gallery which erroneously contained a video URL */
-                {
-                    title: "Shipping up",
-                    url: "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up", // Replaced video URL
-                    description: "Placeholder for a photo."
-                },
-                /* End retained fix */
-                {
-                    title: "to Boston",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Watercolor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Rocky",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Bethel",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Backpack",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Tractor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Autumnal",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Escorial",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Snow",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Cinema",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Watching",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "paints",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Fumes",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Mount Auburn",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Solidarity",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Ipswich",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
+                    "description": ""
                 },
                 {
-                    title: "I voted for the maniac.",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Blue",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Not anymore..",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Iceland",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
+                    "description": ""
                 },
                 {
-                    title: "The shots woke me up.",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Light",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
+                    "description": ""
                 },
                 {
-                    title: "Government Center",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
-                    description: ""
+                    "type": "image",
+                    "title": "Tectonic",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
+                    "description": ""
                 },
                 {
-                    title: "2016 NH",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
-                    description: ""
+                    "type": "image",
+                    "title": "Sky",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
+                    "description": ""
                 },
                 {
-                    title: "X Files in MA",
-                    url: "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
-                    description: ""
+                    "type": "image",
+                    "title": "Tomatillo",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Purple",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Vocal",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Moon",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Zakim",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Converse",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Thoughts",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Onward",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Feel the Bern",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Bernie",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Bernie 2",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "blues",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Ken",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Dropkick",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
+                    "description": ""
+                },
+                /* Placeholder added previously for photo gallery entry that used a video URL */
+                {
+                    "type": "image",
+                    "title": "Shipping up",
+                    "url": "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up",
+                    "description": "Placeholder for a photo."
+                },
+                /* End placeholder */
+                {
+                    "type": "image",
+                    "title": "to Boston",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Rocky",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Backpack",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Autumnal",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Snow",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Watching",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Fumes",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Solidarity",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "I voted for the maniac.",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Not anymore..",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "The shots woke me up.",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Government Center",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "2016 NH",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "X Files in MA",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
+                    "description": ""
                 }
             ];
 
             // =========================================================================
-            //  END OF VIDEO & IMAGE DATA SECTIONS
+            //  END OF MEDIA DATA STORE
             // =========================================================================
 
             const filmsGallery = document.getElementById('films-gallery');
             const filmsLeftBtn = document.getElementById('films-left-btn');
             const filmsRightBtn = document.getElementById('films-right-btn');
-            
-            // Removed documentary-related variables since the section was removed
-            /*
-            const documentaryGallery = document.getElementById('documentary-gallery');
-            const documentaryLeftBtn = document.getElementById('documentary-left-btn');
-            const documentaryRightBtn = document.getElementById('documentary-right-btn');
-            */
 
             const editingGallery = document.getElementById('editing-gallery');
             const editingLeftBtn = document.getElementById('editing-left-btn');
@@ -870,7 +1033,7 @@
             const lightboxContent = document.getElementById('lightbox-content');
             const lightboxCloseBtn = document.getElementById('lightbox-close');
 
-            function populateHorizontalGallery(galleryElement, items, isVideo = true) {
+            function populateHorizontalGallery(galleryElement, items, isVideo) {
                 galleryElement.innerHTML = '';
                 items.forEach(item => {
                     const card = document.createElement('div');
@@ -930,24 +1093,40 @@
                 });
             }
 
-            // Setup all gallery navigations (Removed documentary setup)
+            // Setup all gallery navigations 
             setupGalleryNavigation(filmsLeftBtn, filmsRightBtn, filmsGallery);
             setupGalleryNavigation(editingLeftBtn, editingRightBtn, editingGallery);
             setupGalleryNavigation(pastWorkLeftBtn, pastWorkRightBtn, pastWorkGallery);
             setupGalleryNavigation(imageGalleryLeftBtn, imageGalleryRightBtn, imageGallery);
 
 
-            populateHorizontalGallery(filmsGallery, filmVideos);
-            // Removed documentary gallery population
-            // populateHorizontalGallery(documentaryGallery, documentaryVideos); 
-            populateHorizontalGallery(editingGallery, editingVideos);
-            populateHorizontalGallery(pastWorkGallery, pastWorkVideos);
-            // Populate image gallery (false flag indicates image, not video)
-            populateHorizontalGallery(imageGallery, galleryImages, false);
+            // FILTER AND POPULATE GALLERIES from the single mediaData source
+            populateHorizontalGallery(
+                filmsGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'films'), 
+                true
+            );
+            populateHorizontalGallery(
+                editingGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'editing'), 
+                true
+            );
+            populateHorizontalGallery(
+                pastWorkGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'archive'), 
+                true
+            );
+            populateHorizontalGallery(
+                imageGallery, 
+                mediaData.filter(item => item.type === 'image'), 
+                false
+            );
 
             document.querySelectorAll('.horizontal-gallery-item').forEach(card => {
-                card.addEventListener('click', () => {
-                    const itemUrl = card.dataset.url;
+                card.addEventListener('click', (e) => {
+                    // Find the closest parent card to ensure click handler works even if clicking text
+                    const videoCard = e.currentTarget;
+                    const itemUrl = videoCard.dataset.url;
                     
                     // Check if it's a video (YouTube embed URL)
                     if (itemUrl.includes('youtube.com/embed')) {
@@ -961,7 +1140,7 @@
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen
-                                title="${card.querySelector('h3').textContent} - YouTube Video Player"
+                                title="${videoCard.querySelector('h3').textContent} - YouTube Video Player"
                             ></iframe>
                         `;
                         openLightbox(iframeContainer);
@@ -969,7 +1148,7 @@
                         // Handle image click
                         const imageElement = document.createElement('img');
                         imageElement.src = itemUrl;
-                        imageElement.alt = card.querySelector('h3').textContent;
+                        imageElement.alt = videoCard.querySelector('h3').textContent;
                         // Max-h-screen-lg ensures the image fits better within typical phone/tablet screens
                         imageElement.className = 'max-w-full max-h-screen-lg object-contain'; 
                         

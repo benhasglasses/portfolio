@@ -1,1012 +1,1211 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-        <title>Benjamin Oliver - Filmmaker, Editor, Producer, Post Production Specialist</title>
-    <meta name="description" content="Professional portfolio of Benjamin Oliver: Award-winning Filmmaker, Editor, and Producer specializing in narratives, documentaries, and post-production. Hire a creative storyteller.">
-    <link rel="canonical" href="https://www.benjaminoliver.net">
+    <meta charset="UTF-8">
+    <!-- MANDATORY RESPONSIVE META TAG: Ensures proper scaling on all devices -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- PRIMARY SEO TAGS -->
+    <title>Benjamin Oliver - Filmmaker, Editor, Producer, Post Production Specialist</title>
+    <meta name="description" content="Professional portfolio of Benjamin Oliver: Award-winning Filmmaker, Editor, and Producer specializing in narratives, documentaries, and post-production. Hire a creative storyteller.">
+    <link rel="canonical" href="https://www.benjaminoliver.net">
 
-        <meta property="og:title" content="Benjamin Oliver | Filmmaker & Editor Portfolio">
-    <meta property="og:description" content="Explore compelling narratives, documentaries, post-production work, and photography by Benjamin Oliver, a dedicated storyteller.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://www.benjaminoliver.net">
-    <meta property="og:image" content="https://placehold.co/1200x630/000000/FFFFFF?text=Benjamin+Oliver+Portfolio">
-    
-        <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:site" content="@benhasglasses (Bluesky)">
-    <meta name="twitter:creator" content="@benhasglasses">
-    <meta name="twitter:title" content="Filmmaker, Editor, & Producer Portfolio | Benjamin Oliver">
-    <meta name="twitter:description" content="View narrative films, documentary features, editing reels, and commercial work from professional filmmaker Benjamin Oliver.">
+    <!-- OPEN GRAPH (OG) TAGS for Social Sharing -->
+    <meta property="og:title" content="Benjamin Oliver | Filmmaker & Editor Portfolio">
+    <meta property="og:description" content="Explore compelling narratives, documentaries, post-production work, and photography by Benjamin Oliver, a dedicated storyteller.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.benjaminoliver.net">
+    <meta property="og:image" content="https://placehold.co/1200x630/000000/FFFFFF?text=Benjamin+Oliver+Portfolio">
+    
+    <!-- TWITTER/BLUESKY CARD TAGS for Social Sharing -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@benhasglasses (Bluesky)">
+    <meta name="twitter:creator" content="@benhasglasses">
+    <meta name="twitter:title" content="Filmmaker, Editor, & Producer Portfolio | Benjamin Oliver">
+    <meta name="twitter:description" content="View narrative films, documentary features, editing reels, and commercial work from professional filmmaker Benjamin Oliver.">
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://www.youtube.com">
-    <link rel="preconnect" href="https://i.ytimg.com">
-    <link rel="preconnect" href="https://raw.githubusercontent.com">
+    <!-- PERFORMANCE OPTIMIZATION (Preconnecting to external hosts) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://www.youtube.com">
+    <link rel="preconnect" href="https://i.ytimg.com">
+    <link rel="preconnect" href="https://raw.githubusercontent.com">
 
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        /* FONT HOSTING: Custom Font Face Rule - NOW USING JSDELIVR CDN FOR STABILITY */
-        @font-face {
-            font-family: 'TAYBirdie';
-            src: url('https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/TAYBirdie.otf') format('opentype');
-            font-weight: 400;
-            font-style: normal;
-        }
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* FONT HOSTING: Custom Font Face Rule - NOW USING JSDELIVR CDN FOR STABILITY */
+        @font-face {
+            font-family: 'TAYBirdie';
+            src: url('https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/TAYBirdie.otf') format('opentype');
+            font-weight: 400;
+            font-style: normal;
+        }
 
-        /* Visually Hidden H1 for SEO, keeps page design clean (Retained) */
-        .sr-only { 
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border-width: 0;
-        }
+        /* Visually Hidden H1 for SEO, keeps page design clean (Retained) */
+        .sr-only { 
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border-width: 0;
+        }
 
-        body {
-            /* FONT: Using TAYBirdie font from GitHub */
-            font-family: 'TAYBirdie', sans-serif;
-            background-color: #ffffff;
-            color: #000000;
-        }
-        .gallery-border {
-            border: 4px solid black;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-        }
-        
-        .horizontal-gallery-container {
-            overflow-x: auto;
-            white-space: nowrap;
-            padding: 10px 0;
-            scroll-behavior: smooth;
-        }
-        .horizontal-gallery-container::-webkit-scrollbar {
-            height: 8px;
-        }
-        .horizontal-gallery-container::-webkit-scrollbar-thumb {
-            background-color: #000000;
-            border-radius: 4px;
-        }
-        .horizontal-gallery-item {
-            display: inline-block;
-            vertical-align: top;
-            /* Using min-width ensures it doesn't shrink below 300px while retaining the design intention */
-            min-width: 300px; 
-            width: 300px;
-            margin-right: 20px;
-            white-space: normal;
-        }
-        .gallery-wrapper {
-            position: relative;
-        }
-        .gallery-nav-btn {
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            padding: 10px;
-            border-radius: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            z-index: 10;
-            opacity: 0;
-            transition: opacity 0.3s;
-            cursor: pointer; /* Added cursor pointer for better UX */
-        }
-        .gallery-wrapper:hover .gallery-nav-btn {
-            opacity: 1;
-        }
+        body {
+            /* FONT: Using TAYBirdie font from GitHub */
+            font-family: 'TAYBirdie', sans-serif;
+            background-color: #ffffff;
+            color: #000000;
+        }
+        .gallery-border {
+            border: 4px solid black;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        
+        .horizontal-gallery-container {
+            overflow-x: auto;
+            white-space: nowrap;
+            padding: 10px 0;
+            scroll-behavior: smooth;
+        }
+        .horizontal-gallery-container::-webkit-scrollbar {
+            height: 8px;
+        }
+        .horizontal-gallery-container::-webkit-scrollbar-thumb {
+            background-color: #000000;
+            border-radius: 4px;
+        }
+        .horizontal-gallery-item {
+            display: inline-block;
+            vertical-align: top;
+            /* Using min-width ensures it doesn't shrink below 300px while retaining the design intention */
+            min-width: 300px; 
+            width: 300px;
+            margin-right: 20px;
+            white-space: normal;
+        }
+        .gallery-wrapper {
+            position: relative;
+        }
+        .gallery-nav-btn {
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            padding: 10px;
+            border-radius: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 10;
+            opacity: 0;
+            transition: opacity 0.3s;
+            cursor: pointer; /* Added cursor pointer for better UX */
+        }
+        .gallery-wrapper:hover .gallery-nav-btn {
+            opacity: 1;
+        }
 
-        /* RESPONSIVENESS FIX: Ensure gallery buttons are visible on smaller screens where :hover is not reliable */
-        @media (max-width: 767px) {
-            .gallery-nav-btn {
-                opacity: 1 !important; /* Force visible on mobile/tablet */
-                /* Adjust padding to prevent clipping on touch */
-                padding: 8px;
-            }
-            .gallery-nav-btn.left {
-                left: 0;
-            }
-            .gallery-nav-btn.right {
-                right: 0;
-            }
-        }
+        /* RESPONSIVENESS FIX: Ensure gallery buttons are visible on smaller screens where :hover is not reliable */
+        @media (max-width: 767px) {
+            .gallery-nav-btn {
+                opacity: 1 !important; /* Force visible on mobile/tablet */
+                /* Adjust padding to prevent clipping on touch */
+                padding: 8px;
+            }
+            .gallery-nav-btn.left {
+                left: 0;
+            }
+            .gallery-nav-btn.right {
+                right: 0;
+            }
+        }
 
-        .gallery-nav-btn.left {
-            left: 10px;
-        }
-        .gallery-nav-btn.right {
-            right: 10px;
-        }
-        .lightbox-backdrop {
-            background-color: rgba(0, 0, 0, 0.9);
-            z-index: 50;
-        }
-        .video-player-container {
-            position: relative;
-            padding-top: 56.25%;
-            background-color: black;
-        }
-        .video-player-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        .video-controls-container {
-            opacity: 0;
-            transition: opacity 0.3s;
-            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
-            z-index: 10;
-        }
-        .video-player-container:hover .video-controls-container {
-            opacity: 1;
-        }
-        .progress-bar-fill {
-            height: 4px;
-            background-color: #ffffff;
-            transition: width 0.1s linear;
-        }
-        .progress-bar-container:hover .progress-bar-fill {
-            height: 8px;
-        }
-        .thumb-scrubber {
-            width: 16px;
-            height: 16px;
-            background-color: #ffffff;
-            border-radius: 9999px;
-            transform: translateX(-50%) translateY(-50%);
-            top: 50%;
-            left: 0;
-            transition: background-color 0.2s ease-in-out;
-        }
-        .progress-bar-container:hover .thumb-scrubber {
-            background-color: #3b82f6;
-        }
-        .video-controls-container {
-            user-select: none;
-        }
-    </style>
+        .gallery-nav-btn.left {
+            left: 10px;
+        }
+        .gallery-nav-btn.right {
+            right: 10px;
+        }
+        .lightbox-backdrop {
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 50;
+        }
+        .video-player-container {
+            position: relative;
+            padding-top: 56.25%;
+            background-color: black;
+        }
+        .video-player-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-controls-container {
+            opacity: 0;
+            transition: opacity 0.3s;
+            background: linear-gradient(to top, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+            z-index: 10;
+        }
+        .video-player-container:hover .video-controls-container {
+            opacity: 1;
+        }
+        .progress-bar-fill {
+            height: 4px;
+            background-color: #ffffff;
+            transition: width 0.1s linear;
+        }
+        .progress-bar-container:hover .progress-bar-fill {
+            height: 8px;
+        }
+        .thumb-scrubber {
+            width: 16px;
+            height: 16px;
+            background-color: #ffffff;
+            border-radius: 9999px;
+            transform: translateX(-50%) translateY(-50%);
+            top: 50%;
+            left: 0;
+            transition: background-color 0.2s ease-in-out;
+        }
+        .progress-bar-container:hover .thumb-scrubber {
+            background-color: #3b82f6;
+        }
+        .video-controls-container {
+            user-select: none;
+        }
+    </style>
 
-        <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Person",
-      "name": "Benjamin Oliver",
-      "url": "https://www.benjaminoliver.net", 
-      "jobTitle": "Filmmaker, Editor, and Producer",
-      "description": "Professional filmmaker and editor specializing in narrative films, documentaries, post-production, and commercial content.",
-      "knowsAbout": [
-        "Filmmaking",
-        "Video Editing",
-        "Documentary Production",
-        "Post Production",
-        "Narrative Film",
-        "Cinematography",
-        "Video Production"
-      ],
-      "image": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG",
-      "sameAs": [
-        "https://www.youtube.com/benhasglasses", 
-        "https://linkedin.com/in/YourLinkedIn",
-        "https://bsky.app/profile/benhasglasses"
-      ]
-    }
-    </script>
+    <!-- JSON-LD SCHEMA MARKUP (Structured Data for Search Engines) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Benjamin Oliver",
+      "url": "https://www.benjaminoliver.net", 
+      "jobTitle": "Filmmaker, Editor, and Producer",
+      "description": "Professional filmmaker and editor specializing in narrative films, documentaries, post-production, and commercial content.",
+      "knowsAbout": [
+        "Filmmaking",
+        "Video Editing",
+        "Documentary Production",
+        "Post Production",
+        "Narrative Film",
+        "Cinematography",
+        "Video Production"
+      ],
+      "image": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG",
+      "sameAs": [
+        "https://www.youtube.com/benhasglasses", 
+        "https://linkedin.com/in/YourLinkedIn",
+        "https://bsky.app/profile/benhasglasses"
+      ]
+    }
+    </script>
 </head>
 <body class="bg-white text-black leading-relaxed">
 
-        <h1 class="sr-only">Benjamin Oliver - Professional Filmmaker, Editor, and Video Producer Portfolio</h1>
+    <!-- SEO Addition: Visually Hidden H1 Tag (Retained) -->
+    <h1 class="sr-only">Benjamin Oliver - Professional Filmmaker, Editor, and Video Producer Portfolio</h1>
 
-    <header class="fixed top-0 left-0 w-full bg-white z-40 p-4 border-b border-gray-200">
-                <nav class="max-w-screen-xl mx-auto flex justify-center items-center text-sm sm:text-base font-bold tracking-wider uppercase space-x-2 md:space-x-12 px-2 md:px-20 overflow-x-auto whitespace-nowrap">
-            <a href="#about" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">About</a>
-            <a href="#films" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Work</a>
-            <a href="#editing" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Editing</a>
-            <a href="#gallery" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Photo</a>
-            <a href="#past-work" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Archive</a>
-            <a href="#contact" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Contact</a>
-        </nav>
-    </header>
+    <header class="fixed top-0 left-0 w-full bg-white z-40 p-4 border-b border-gray-200">
+        <!-- UPDATED: Moved Photography link before Archive link -->
+        <nav class="max-w-screen-xl mx-auto flex justify-center items-center text-sm sm:text-base font-bold tracking-wider uppercase space-x-2 md:space-x-12 px-2 md:px-20 overflow-x-auto whitespace-nowrap">
+            <a href="#about" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">About</a>
+            <a href="#films" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Work</a>
+            <a href="#editing" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Editing</a>
+            <a href="#gallery" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Photo</a>
+            <a href="#past-work" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Archive</a>
+            <a href="#contact" class="hover:text-gray-500 transition-colors duration-200 p-1 md:p-0">Contact</a>
+        </nav>
+    </header>
 
-    <main class="pt-24 max-w-screen-xl mx-auto px-4 md:px-20">
-        <section id="about" class="py-16">
-            <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
-                <div class="w-full md:w-1/2 flex justify-center">
-                                        <img src="https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG" 
-                            alt="Professional headshot of Benjamin Oliver, Filmmaker, wearing glasses." 
-                            loading="lazy"
-                            class="rounded-lg shadow-lg max-w-full h-auto">
-                </div>
-                <div class="w-full md:w-1/2 text-center md:text-left">
-                    <h2 class="text-4xl font-bold mb-4 uppercase">About Me</h2>
-                    <p class="mb-3 text-base">
-                        I am a storyteller dedicated to creating compelling narratives through film and sound. With an eye for detail and a passion for creating emotion, I believe in the power of visual and aural to inspire and connect us to our surroundings. My work includes everything from narratives to documentaries and commercial content. I am always looking for new ways to collaborate with others in order to bring important stories to life, especially if they involve spaceships. I like spaceships.
-                    </p>
-                    <p class="text-base">
-                        You can find more of my work and content on my YouTube channel: <a href="https://www.youtube.com/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">youtube.com/benhasglasses</a>.
-                    </p>
-                    <p class="text-base">
-                        Follow me on **Bluesky**: <a href="https://bsky.app/profile/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">@benhasglasses</a>.
-                    </p>
-                </div>
-            </div>
-        </section>
+    <main class="pt-24 max-w-screen-xl mx-auto px-4 md:px-20">
+        <section id="about" class="py-16">
+            <div class="flex flex-col md:flex-row items-center md:items-start space-y-8 md:space-y-0 md:space-x-8">
+                <div class="w-full md:w-1/2 flex justify-center">
+                    <!-- FIXED: Using jsDelivr CDN for stable GitHub image loading -->
+                    <img src="https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG" 
+                            alt="Professional headshot of Benjamin Oliver, Filmmaker, wearing glasses." 
+                            loading="lazy"
+                            class="rounded-lg shadow-lg max-w-full h-auto">
+                </div>
+                <div class="w-full md:w-1/2 text-center md:text-left">
+                    <h2 class="text-4xl font-bold mb-4 uppercase">About Me</h2>
+                    <p class="mb-3 text-base">
+                        I am a storyteller dedicated to creating compelling narratives through film and sound. With an eye for detail and a passion for creating emotion, I believe in the power of visual and aural to inspire and connect us to our surroundings. My work includes everything from narratives to documentaries and commercial content. I am always looking for new ways to collaborate with others in order to bring important stories to life, especially if they involve spaceships. I like spaceships.
+                    </p>
+                    <p class="text-base">
+                        You can find more of my work and content on my YouTube channel: <a href="https://www.youtube.com/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">youtube.com/benhasglasses</a>.
+                    </p>
+                    <p class="text-base">
+                        Follow me on **Bluesky**: <a href="https://bsky.app/profile/benhasglasses" target="_blank" class="text-black underline hover:text-gray-600 transition-colors">@benhasglasses</a>.
+                    </p>
+                </div>
+            </div>
+        </section>
 
-                <section id="films" class="gallery-border py-16">
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Work</h2>
-            <p class="text-lg mb-4 text-center text-gray-700"></p> 
-            <div class="gallery-wrapper relative">
-                <div id="films-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                                <button id="films-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="films-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
+        <!-- Gallery sections rely on horizontal-gallery-container's overflow-x: auto for touch scrolling -->
+        <section id="films" class="gallery-border py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Work</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p> 
+            <div class="gallery-wrapper relative">
+                <div id="films-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <!-- Navigation buttons are made visible on mobile via CSS adjustments -->
+                <button id="films-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="films-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
 
-                <section id="editing" class="gallery-border py-16">
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Editing</h2>
-            <p class="text-xl mb-4 text-center text-gray-700">Collaborations with other filmmakers.</p>
-            <div class="gallery-wrapper relative">
-                <div id="editing-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                <button id="editing-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="editing-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
+        <!-- REMOVED: Section id="documentary" has been removed as requested. -->
 
-                <section id="gallery" class="gallery-border py-16">
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Photo</h2>
-            <p class="text-lg mb-4 text-center text-gray-700"></p>
-            <div class="gallery-wrapper relative">
-                <div id="image-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                <button id="image-gallery-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="image-gallery-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
-        
-                <section id="past-work" class="gallery-border py-16">
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Archive</h2>
-            <p class="text-lg mb-4 text-center text-gray-700"></p>
-            <div class="gallery-wrapper relative">
-                <div id="past-work-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
-                </div>
-                <button id="past-work-left-btn" class="gallery-nav-btn left-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
-                    </svg>
-                </button>
-                <button id="past-work-right-btn" class="gallery-nav-btn right-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-                    </svg>
-                </button>
-            </div>
-        </section>
-        
-        <section id="contact" class="py-16">
-            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Contact</h2>
-            <p class="text-xl mb-8 text-center text-gray-700">Get in touch to discuss your project.</p>
-            <div class="max-w-md mx-auto">
-                <form action="https://formspree.io/f/mandrowj" method="POST" class="space-y-6">
-                    <div>
-                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
-                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
-                    </div>
-                    <div>
-                        <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
-                        <input type="email" id="email" name="_replyto" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
-                    </div>
-                    <div>
-                        <label for="message" class="block text-sm font-medium text-gray-700">Your Message (Describe your project or need)</label>
-                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"></textarea>
-                    </div>
-                    <div class="flex justify-center">
-                        <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-200">
-                            Send Message
-                        </button>
-                    </div>
-                </form>
-            </div>
-        </section>
+        <section id="editing" class="gallery-border py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Editing</h2>
+            <p class="text-xl mb-4 text-center text-gray-700">Collaborations with other filmmakers.</p>
+            <div class="gallery-wrapper relative">
+                <div id="editing-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="editing-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="editing-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
 
-    </main>
+        <!-- MOVED SECTION: Photography now appears above Archive -->
+        <section id="gallery" class="gallery-border py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Photo</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p>
+            <div class="gallery-wrapper relative">
+                <div id="image-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="image-gallery-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="image-gallery-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <!-- MOVED SECTION: Archive now appears after Photography -->
+        <section id="past-work" class="gallery-border py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Archive</h2>
+            <p class="text-lg mb-4 text-center text-gray-700"></p>
+            <div class="gallery-wrapper relative">
+                <div id="past-work-gallery" class="horizontal-gallery-container flex space-x-6 pb-4">
+                </div>
+                <button id="past-work-left-btn" class="gallery-nav-btn left-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
+                    </svg>
+                </button>
+                <button id="past-work-right-btn" class="gallery-nav-btn right-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                    </svg>
+                </button>
+            </div>
+        </section>
+        
+        <section id="contact" class="py-16">
+            <h2 class="text-4xl font-bold mb-8 text-center uppercase">Contact</h2>
+            <p class="text-xl mb-8 text-center text-gray-700">Get in touch to discuss your project.</p>
+            <div class="max-w-md mx-auto">
+                <form action="https://formspree.io/f/mandrowj" method="POST" class="space-y-6">
+                    <div>
+                        <label for="name" class="block text-sm font-medium text-gray-700">Your Name</label>
+                        <input type="text" id="name" name="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="email" class="block text-sm font-medium text-gray-700">Your Email</label>
+                        <input type="email" id="email" name="_replyto" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm">
+                    </div>
+                    <div>
+                        <label for="message" class="block text-sm font-medium text-gray-700">Your Message (Describe your project or need)</label>
+                        <textarea id="message" name="message" rows="4" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-black focus:border-black sm:text-sm"></textarea>
+                    </div>
+                    <div class="flex justify-center">
+                        <button type="submit" class="inline-flex justify-center py-2 px-6 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-black hover:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black transition-colors duration-200">
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </section>
 
-    <div id="lightbox" class="fixed inset-0 hidden items-center justify-center p-4 lightbox-backdrop">
-                <div class="relative w-full max-w-5xl md:max-w-3xl lg:max-w-5xl rounded-lg shadow-2xl">
-            <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold z-50">
-                &times;
-            </button>
-            <div id="lightbox-content" class="rounded-lg overflow-hidden">
-                </div>
-        </div>
-    </div>
+    </main>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
+    <div id="lightbox" class="fixed inset-0 hidden items-center justify-center p-4 lightbox-backdrop">
+        <!-- Responsive Lightbox: Reduced max-w from 5xl to 3xl for better mobile fit, while still allowing large size -->
+        <div class="relative w-full max-w-5xl md:max-w-3xl lg:max-w-5xl rounded-lg shadow-2xl">
+            <button id="lightbox-close" class="absolute top-4 right-4 text-white text-3xl font-bold z-50">
+                &times;
+            </button>
+            <div id="lightbox-content" class="rounded-lg overflow-hidden">
+                </div>
+        </div>
+    </div>
 
-            /* * =========================================================================
-            * CONSOLIDATED MEDIA DATA STORE (Videos and Images)
-            * =========================================================================
-            */
-            
-            // All content data is now consolidated here for easier management.
-            const mediaData = [
-                // --- FILMS (Work) ---
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "Life After Leukemia",
-                    "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
-                    "poster": "https://i.ytimg.com/vi/Q5koayQ0X0c/hqdefault.jpg",
-                    "description": "A mockumentary about a former child actor."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "Ghosts",
-                    "url": "https://www.youtube.com/embed/h4UgSNaT3WQ",
-                    "poster": "https://i.ytimg.com/vi/h4UgSNaT3WQ/hqdefault.jpg",
-                    "description": "Ghosts still follow you after all is lost."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "The Boy in the T-Rex Raincoat",
-                    "url": "https://www.youtube.com/embed/bb-9fKcFeEc",
-                    "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
-                    "description": "Mischief, Mayhem, Dinosaur Raincoats."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "D.A.V.E.",
-                    "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
-                    "poster": "https://i.ytimg.com/vi/v7o8P8UWWIU/hqdefault.jpg",
-                    "description": "A story about one man's job search."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "Forgotten Firepower: The Story of Porkins",
-                    "url": "https://www.youtube.com/embed/lVekJ19DEQw",
-                    "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
-                    "description": "The story of Jek Porkins, a hero in the fight against the Empire."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "Gimme That Shot | The Charms",
-                    "url": "https://www.youtube.com/embed/_jGBEFT35FA",
-                    "poster": "https://i.ytimg.com/vi/_jGBEFT35FA/hqdefault.jpg",
-                    "description": "The Charms 'Gimme That Shot'."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "Memorial Day | The Midnight Creeps",
-                    "url": "https://www.youtube.com/embed/-YVujcWxrdM",
-                    "poster": "https://i.ytimg.com/vi/-YVujcWxrdM/hqdefault.jpg",
-                    "description": "The Midnight Creeps 'Memorial Day'."
-                },
-                {
-                    "type": "video",
-                    "category": "films",
-                    "title": "The Buffer Zone | The Sterns",
-                    "url": "https://www.youtube.com/embed/6AktaSdWX60",
-                    "poster": "https://i.ytimg.com/vi/6AktaSdWX60/hqdefault.jpg",
-                    "description": "The Sterns 'The Buffer Zone'."
-                },
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
 
-                // --- EDITING ---
-                {
-                    "type": "video",
-                    "category": "editing",
-                    "title": 'Stanley',
-                    "url": 'https://www.youtube.com/embed/yyzRgXcAhxc',
-                    "poster": 'https://i.ytimg.com/vi/yyzRgXcAhxc/hqdefault.jpg',
-                    "description": 'Directed by Patrick McMahill"'
-                },
-                {
-                    "type": "video",
-                    "category": "editing",
-                    "title": 'The Pixiestick Incident',
-                    "url": 'https://www.youtube.com/embed/R7p71Ph9yIA',
-                    "poster": 'https://i.ytimg.com/vi/R7p71Ph9yIA/hqdefault.jpg',
-                    "description": 'Directed by Michael Henry'
-                },
-                {
-                    "type": "video",
-                    "category": "editing",
-                    "title": 'Love of a Lifetime',
-                    "url": 'https://www.youtube.com/embed/BsHGDvnLtX4',
-                    "poster": 'https://i.ytimg.com/vi/BsHGDvnLtX4/hqdefault.jpg',
-                    "description": 'Directed by David J. Curtis '
-                },
-                {
-                    "type": "video",
-                    "category": "editing",
-                    "title": 'Plus 1s',
-                    "url": 'https://www.youtube.com/embed/zDEYn0xqJtQ',
-                    "poster": 'https://i.ytimg.com/vi/zDEYn0xqJtQ/hqdefault.jpg',
-                    "description": 'Directed by David J. Curtis and Katelyn Reddy'
-                },
-                {
-                    "type": "video",
-                    "category": "editing",
-                    "title": 'Man of Glass',
-                    "url": 'https://www.youtube.com/embed/fxs6m2-l85k',
-                    "poster": 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
-                    "description": 'Directed by Paul Yalen'
-                },
-
-    
-                { "type": "image",
-                 "title": "Chess",
-                 "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/chess-web.jpg",
-                 "description": ""
+            /* * =========================================================================
+            * CONSOLIDATED MEDIA DATA STORE (Videos and Images)
+            * =========================================================================
+            */
+            
+            // All content data is now consolidated here for easier management.
+            const mediaData = [
+                // --- FILMS (Work) ---
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Life After Leukemia",
+                    "url": "https://www.youtube.com/embed/Q5koayQ0X0c",
+                    "poster": "https://i.ytimg.com/vi/Q5koayQ0X0c/hqdefault.jpg",
+                    "description": "A mockumentary about a former child actor."
                 },
-                { "type":"image",
-                 "title": "Cinema Marquee",
-                 "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/cinema-web.jpg",
-                 "description": ""
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Ghosts",
+                    "url": "https://www.youtube.com/embed/h4UgSNaT3WQ",
+                    "poster": "https://i.ytimg.com/vi/h4UgSNaT3WQ/hqdefault.jpg",
+                    "description": "Ghosts still follow you after all is lost."
                 },
-                { "type": "image", "title": "Rocky Cove", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/cove-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 1", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_01-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 2", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_02-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 3", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_03-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 4", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_04-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 5", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_05-web.jpg", "description": "" },
-                { "type": "image", "title": "Editing Suite 6", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/edin_06-web.jpg", "description": "" },
-                { "type": "image", "title": "Campfire", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/fire-web.jpg", "description": "" },
-                { "type": "image", "title": "Wildfires", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/fires-web.jpg", "description": "" },
-                { "type": "image", "title": "Flower in Bloom", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/flower-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 1", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_01-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 2", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_02-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 3", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_03-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 4", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_04-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 5", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_05-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Landscape 6", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ice_06-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Bridge", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/Iceland-235-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Water", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/Iceland-243-web.jpg", "description": "" },
-                { "type": "image", "title": "Iceland Church", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/Iceland-406-web.jpg", "description": "" },
-                { "type": "image", "title": "LED Lights", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/led-web.jpg", "description": "" },
-                { "type": "image", "title": "Statue of Liberty", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/liberte-web.jpg", "description": "" },
-                { "type": "image", "title": "Studio Lights", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ligjts-web.jpg", "description": "" },
-                { "type": "image", "title": "Looking Up", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/lookup-web.jpg", "description": "" },
-                { "type": "image", "title": "Maine", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/maine-web.jpg", "description": "" },
-                { "type": "image", "title": "Microphone", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/mic-web.jpg", "description": "" },
-                { "type": "image", "title": "Moby Dick", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/moby-web.jpg", "description": "" },
-                { "type": "image", "title": "Morning Light", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/morning-web.jpg", "description": "" },
-                { "type": "image", "title": "Notre Dame", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/notre-web.jpg", "description": "" },
-                { "type": "image", "title": "Old Edit Station", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/oldeditstation-web.jpg", "description": "" },
-                { "type": "image", "title": "On Location", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/onlocation-web.jpg", "description": "" },
-                { "type": "image", "title": "Paints", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/paints-web.jpg", "description": "" },
-                { "type": "image", "title": "Shakespeare", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/shakespeare-web.jpg", "description": "" },
-                { "type": "image", "title": "Stop Sign", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/stop-web.jpg", "description": "" },
-                { "type": "image", "title": "Sundance", "url": "https://cdn.jsdelivr.jsdelivr.net/gh/benhasglasses/portfolio@main/images/sundance-web.jpg", "description": "" },
-                { "type": "image", "title": "Tape", "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/tape-web.jpg", "description": "" },
-                { "type": "image",
-                 "title": "Target",
-                 "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/target-web.jpg",
-                 "description": ""
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "The Boy in the T-Rex Raincoat",
+                    "url": "https://www.youtube.com/embed/bb-9fKcFeEc",
+                    "poster": "https://i.ytimg.com/vi/bb-9fKcFeEc/hqdefault.jpg",
+                    "description": "Mischief, Mayhem, Dinosaur Raincoats."
                 },
-                {
-                  "type": "image",
-                  "title": "Think",
-                  "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/think-web.jpg",
-                  "description": ""
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "D.A.V.E.",
+                    "url": "https://www.youtube.com/embed/v7o8P8UWWIU",
+                    "poster": "https://i.ytimg.com/vi/v7o8P8UWWIU/hqdefault.jpg",
+                    "description": "A story about one man's job search."
                 },
-                {
-                "type": "image",
-                 "title": "Tiger",
-                 "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/tiger-web.jpg",
-                  "description": ""
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Forgotten Firepower: The Story of Porkins",
+                    "url": "https://www.youtube.com/embed/lVekJ19DEQw",
+                    "poster": "https://i.ytimg.com/vi/lVekJ19DEQw/hqdefault.jpg",
+                    "description": "The story of Jek Porkins, a hero in the fight against the Empire."
                 },
-                {
-                  "type": "image",
-                 "title": "Window Light",
-                 "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/window-web.jpg",
-                 "description": ""
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Gimme That Shot | The Charms",
+                    "url": "https://www.youtube.com/embed/_jGBEFT35FA",
+                    "poster": "https://i.ytimg.com/vi/_jGBEFT35FA/hqdefault.jpg",
+                    "description": "The Charms 'Gimme That Shot'."
                 },
-                {
-                    "type": "image",
-                    "title": "Madrid",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Alhambra",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Watercolor",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Bethel",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Tractor",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Escorial",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Cinema",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "paints",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Mount Auburn",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Ipswich",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Blue",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Iceland",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Light",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Tectonic",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Sky",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Tomatillo",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Purple",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Vocal",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Moon",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Zakim",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Converse",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Thoughts",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Onward",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Feel the Bern",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Bernie",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Bernie 2",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "blues",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Ken",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Dropkick",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
-                    "description": ""
-                },
-                /* Placeholder added previously for photo gallery entry that used a video URL */
-                {
-                    "type": "image",
-                    "title": "Shipping up",
-                    "url": "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up",
-                    "description": "Placeholder for a photo."
-                },
-                /* End placeholder */
-                {
-                    "type": "image",
-                    "title": "to Boston",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Rocky",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Backpack",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Autumnal",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Snow",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Watching",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Fumes",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Solidarity",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "I voted for the maniac.",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Not anymore..",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "The shots woke me up.",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "Government Center",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "2016 NH",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
-                    "description": ""
-                },
-                {
-                    "type": "image",
-                    "title": "X Files in MA",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
-                    "description": ""
-                }
-            ];
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "Memorial Day | The Midnight Creeps",
+                    "url": "https://www.youtube.com/embed/-YVujcWxrdM",
+                    "poster": "https://i.ytimg.com/vi/-YVujcWxrdM/hqdefault.jpg",
+                    "description": "The Midnight Creeps 'Memorial Day'."
+                },
+                {
+                    "type": "video",
+                    "category": "films",
+                    "title": "The Buffer Zone | The Sterns",
+                    "url": "https://www.youtube.com/embed/6AktaSdWX60",
+                    "poster": "https://i.ytimg.com/vi/6AktaSdWX60/hqdefault.jpg",
+                    "description": "The Sterns 'The Buffer Zone'."
+                },
 
-            // =========================================================================
-            //  END OF MEDIA DATA STORE
-            // =========================================================================
+                // --- EDITING ---
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Stanley',
+                    "url": 'https://www.youtube.com/embed/yyzRgXcAhxc',
+                    "poster": 'https://i.ytimg.com/vi/yyzRgXcAhxc/hqdefault.jpg',
+                    "description": 'Directed by Patrick McMahill"'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'The Pixiestick Incident',
+                    "url": 'https://www.youtube.com/embed/R7p71Ph9yIA',
+                    "poster": 'https://i.ytimg.com/vi/R7p71Ph9yIA/hqdefault.jpg',
+                    "description": 'Directed by Michael Henry'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Love of a Lifetime',
+                    "url": 'https://www.youtube.com/embed/BsHGDvnLtX4',
+                    "poster": 'https://i.ytimg.com/vi/BsHGDvnLtX4/hqdefault.jpg',
+                    "description": 'Directed by David J. Curtis '
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Plus 1s',
+                    "url": 'https://www.youtube.com/embed/zDEYn0xqJtQ',
+                    "poster": 'https://i.ytimg.com/vi/zDEYn0xqJtQ/hqdefault.jpg',
+                    "description": 'Directed by David J. Curtis and Katelyn Reddy'
+                },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Man of Glass',
+                    "url": 'https://www.youtube.com/embed/fxs6m2-l85k',
+                    "poster": 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
+                    "description": 'Directed by Paul Yalen'
+                },
 
-            const filmsGallery = document.getElementById('films-gallery');
-            const filmsLeftBtn = document.getElementById('films-left-btn');
-            const filmsRightBtn = document.getElementById('films-right-btn');
+                // --- ARCHIVE (Past Work) ---
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Easy Trouble",
+                    "url": "https://www.youtube.com/embed/gO8FalkbyRg",
+                    "poster": "https://i.ytimg.com/vi/gO8FalkbyRg/hqdefault.jpg",
+                    "description": "The Charms | Easy Trouble."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Who is Detective Eldridge Haas?",
+                    "url": "https://www.youtube.com/embed/BSSyXBu4jLQ",
+                    "poster": "https://i.ytimg.com/vi/BSSyXBu4jLQ/hqdefault.jpg",
+                    "description": "From The Pixiestick Incident."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "When Will We Have a Space Elevator?",
+                    "url": "https://www.youtube.com/embed/zXF9QAkdt4c",
+                    "poster": "https://i.ytimg.com/vi/zXF9QAkdt4c/hqdefault.jpg",
+                    "description": "This video explores the concept of a space elevator for reaching orbit."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Does Size Really Matter? (In Physics)",
+                    "url": "https://www.youtube.com/embed/jdTRWxafbGk",
+                    "poster": "https://i.ytimg.com/vi/jdTRWxafbGk/hqdefault.jpg",
+                    "description": "Neil discusses how physics impacts life forms of different sizes."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Neil's Most Obscure Explainer",
+                    "url": "https://www.youtube.com/embed/TjLxK5vRDs0",
+                    "poster": "https://i.ytimg.com/vi/TjLxK5vRDs0/hqdefault.jpg",
+                    "description": "This episode delves into harmonic motion in physics."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "On Being Wrong",
+                    "url": "https://www.youtube.com/embed/ua-eXgUQZ8Y",
+                    "poster": "https://i.ytimg.com/vi/ua-eXgUQZ8Y/hqdefault.jpg",
+                    "description": "Neil reflects on being wrong in science and the importance of correction."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to Travel Anywhere On Earth in 45 Minutes",
+                    "url": "https://www.youtube.com/embed/CfNWYGHMvcY",
+                    "poster": "https://i.ytimg.com/vi/CfNWYGHMvcY/hqdefault.jpg",
+                    "description": "This explainer discusses theoretical 'gravity trains' for fast Earth travel."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Discovery That Changed the Universe",
+                    "url": "https://www.youtube.com/embed/5vBpqY8PYsA",
+                    "poster": "https://i.ytimg.com/vi/5vBpqY8PYsA/hqdefault.jpg",
+                    "description": "Neil celebrates Edwin Hubble's universe-changing discoveries."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Is It A Comet or Alien Technology?",
+                    "url": "https://www.youtube.com/embed/FsyzVoIuUGU",
+                    "poster": "https://i.ytimg.com/vi/FsyzVoIuUGU/hqdefault.jpg",
+                    "description": "Neil discusses anomalous interstellar objects and the 'alien of the gaps' phenomenon."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Master of Orion - Voice Actors Trailer",
+                    "url": "https://www.youtube.com/embed/mdFCfmng2Yo",
+                    "poster": "https://i.ytimg.com/vi/mdFCfmng2Yo/hqdefault.jpg",
+                    "description": "Voice actors discuss their roles in Master of Orion."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Scenes with Phil LaMarr | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/VjeK8iCEk5M",
+                    "poster": "https://i.ytimg.com/vi/VjeK8iCEk5M/hqdefault.jpg",
+                    "description": "Phil LaMarr discusses voicing Samurai Jack."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Jack’s Friends | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/fmkCGU8GpkE",
+                    "poster": "https://i.ytimg.com/vi/fmkCGU8GpkE/hqdefault.jpg",
+                    "description": "Voice actors discuss Jack's allies."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Jack’s Enemies | Samurai Jack: Battle Through Time | Adult Swim Games",
+                    "url": "https://www.youtube.com/embed/vLbfDlgu6SM",
+                    "poster": "https://i.ytimg.com/vi/vLbfDlgu6SM/hqdefault.jpg",
+                    "description": "Voice actors discuss Jack's enemies."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice - Batman",
+                    "url": "https://www.youtube.com/embed/t2EKyh4869o",
+                    "poster": "https://i.ytimg.com/vi/t2EKyh4869o/hqdefault.jpg",
+                    "description": "Kevin Conroy discusses playing Batman in the game."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice - Carmine Falcone",
+                    "url": "https://www.youtube.com/embed/sjH7eg6yQnk",
+                    "poster": "https://i.ytimg.com/vi/sjH7eg6yQnk/hqdefault.jpg",
+                    "description": "John Polson discusses voicing Carmine Falcone."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice: Frederick Theodore Posenor III as Krypto",
+                    "url": "https://www.youtube.com/embed/LHhN9K7uddA",
+                    "poster": "https://i.ytimg.com/vi/LHhN9K7uddA/hqdefault.jpg",
+                    "description": "Frederick Theodore Posenor III discusses voicing Krypto."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Behind the Voice: Michael Dorn as Swamp Thing",
+                    "url": "https://www.youtube.com/embed/ym8VJ2jzr-8",
+                    "poster": "https://i.ytimg.com/vi/ym8VJ2jzr-8/hqdefault.jpg",
+                    "description": "Michael Dorn discusses voicing Swamp Thing."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "What is an MRE?",
+                    "url": "https://www.youtube.com/embed/jau3dQwN2IE",
+                    "poster": "https://i.ytimg.com/vi/jau3dQwN2IE/hqdefault.jpg",
+                    "description": "MREs (Meal, Ready-to-Eat) and their continuous improvement."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to re-create the JAWS dolly",
+                    "url": "https://www.youtube.com/embed/J218Oi8PGlw",
+                    "poster": "https://i.ytimg.com/vi/J218Oi8PGlw/hqdefault.jpg",
+                    "description": "Beecher Cotton recreates the iconic 'dolly zoom' shot from the movie Jaws."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "A brief history of the Salem Witch Trials",
+                    "url": "https://www.youtube.com/embed/C7M2nfCstng",
+                    "poster": "https://i.ytimg.com/vi/C7M2nfCstng/hqdefault.jpg",
+                    "description": "A quick overview of the Salem Witch Trials and their tragic events."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Northern Florida Spelunkers",
+                    "url": "https://www.youtube.com/embed/2oUS3wFM3W8",
+                    "poster": "https://i.ytimg.com/vi/2oUS3wFM3W8/hqdefault.jpg",
+                    "description": "Job interview, Spelunker, Crazed movie director"
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Dave's Awesome Video Resume",
+                    "url": "https://www.youtube.com/embed/omh62ob6Qy4",
+                    "poster": "https://i.ytimg.com/vi/omh62ob6Qy4/hqdefault.jpg",
+                    "description": "How not to land a job"
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Soul Patrol",
+                    "url": "https://www.youtube.com/embed/DNu1aD0on8k",
+                    "poster": "https://i.ytimg.com/vi/DNu1aD0on8k/hqdefault.jpg",
+                    "description": "A retired police officer discusses his work in an all-Black police unit."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Create the Ultimate Zombie!",
+                    "url": "https://www.youtube.com/embed/ngAUJC6ujBI",
+                    "poster": "https://i.ytimg.com/vi/ngAUJC6ujBI/hqdefault.jpg",
+                    "description": "Makeup Artist Rob Fitz teaches us how to create realistic zombie makeup effects."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Growing up with the Sweet Science",
+                    "url": "https://www.youtube.com/embed/JB-2a5IFE0Q",
+                    "poster": "https://i.ytimg.com/vi/JB-2a5IFE0Q/hqdefault.jpg",
+                    "description": "Ken Casey and other on the lessons learned through boxing."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "How to Catch Sea Urchins",
+                    "url": "https://www.youtube.com/embed/PltM_OCkFO0",
+                    "poster": "https://i.ytimg.com/vi/PltM_OCkFO0/hqdefault.jpg",
+                    "description": "A sea urchin diver demonstrates his daily routine."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "These Men are Obsessed with Collecting JAWS Memorabilia!",
+                    "url": "https://www.youtube.com/embed/6uj3mfrVFB8",
+                    "poster": "https://i.ytimg.com/vi/6uj3mfrVFB8/hqdefault.jpg",
+                    "description": "Collectors share their passion for Jaws memorabilia and their community."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "Modern Milkman",
+                    "url": "https://www.youtube.com/embed/T1H2daO8Ksg",
+                    "poster": "https://i.ytimg.com/vi/T1H2daO8Ksg/hqdefault.jpg",
+                    "description": "A milkman discusses his unique job.,"
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "When Christmas was Banned in Boston!",
+                    "url": "https://www.youtube.com/embed/EF2buhdTjuk",
+                    "poster": "https://i.ytimg.com/vi/EF2buhdTjuk/hqdefault.jpg",
+                    "description": "A historical look at when Christmas celebrations were banned in Boston."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "History of the LL Bean boots",
+                    "url": "https://www.youtube.com/embed/E8xiV8pCn5o",
+                    "poster": "https://i.ytimg.com/vi/E8xiV8pCn5o/hqdefault.jpg",
+                    "description": "A historical look at the iconic LL Bean boots."
+                },
+                {
+                    "type": "video",
+                    "category": "archive",
+                    "title": "The Alcestis Machine",
+                    "url": "https://www.youtube.com/embed/Apa3qBNK2tw",
+                    "poster": "https://i.ytimg.com/vi/Apa3qBNK2tw/hqdefault.jpg",
+                    "description": "From The Alcestis Machine by Carolyn Oliver."
+                },
+                
+                // --- IMAGES (Photo Gallery) ---
+                {
+                    "type": "image",
+                    "title": "Madrid",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Alhambra",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Watercolor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Bethel",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Tractor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Escorial",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Cinema",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "paints",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Mount Auburn",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Ipswich",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Blue",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Iceland",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Light",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Tectonic",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Sky",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Tomatillo",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Purple",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Vocal",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Moon",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Zakim",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Converse",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Thoughts",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Onward",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Feel the Bern",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Bernie",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Bernie 2",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "blues",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Ken",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Dropkick",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
+                    "description": ""
+                },
+                /* Placeholder added previously for photo gallery entry that used a video URL */
+                {
+                    "type": "image",
+                    "title": "Shipping up",
+                    "url": "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up",
+                    "description": "Placeholder for a photo."
+                },
+                /* End placeholder */
+                {
+                    "type": "image",
+                    "title": "to Boston",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Rocky",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Backpack",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Autumnal",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Snow",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Watching",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Fumes",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Solidarity",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "I voted for the maniac.",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Not anymore..",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "The shots woke me up.",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "Government Center",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "2016 NH",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
+                    "description": ""
+                },
+                {
+                    "type": "image",
+                    "title": "X Files in MA",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
+                    "description": ""
+                }
+            ];
 
-            const editingGallery = document.getElementById('editing-gallery');
-            const editingLeftBtn = document.getElementById('editing-left-btn');
-            const editingRightBtn = document.getElementById('editing-right-btn');
+            // =========================================================================
+            //  END OF MEDIA DATA STORE
+            // =========================================================================
 
-            const pastWorkGallery = document.getElementById('past-work-gallery');
-            const pastWorkLeftBtn = document.getElementById('past-work-left-btn');
-            const pastWorkRightBtn = document.getElementById('past-work-right-btn');
-            
-            const imageGallery = document.getElementById('image-gallery');
-            const imageGalleryLeftBtn = document.getElementById('image-gallery-left-btn');
-            const imageGalleryRightBtn = document.getElementById('image-gallery-right-btn');
+            const filmsGallery = document.getElementById('films-gallery');
+            const filmsLeftBtn = document.getElementById('films-left-btn');
+            const filmsRightBtn = document.getElementById('films-right-btn');
 
-            const lightbox = document.getElementById('lightbox');
-            const lightboxContent = document.getElementById('lightbox-content');
-            const lightboxCloseBtn = document.getElementById('lightbox-close');
+            const editingGallery = document.getElementById('editing-gallery');
+            const editingLeftBtn = document.getElementById('editing-left-btn');
+            const editingRightBtn = document.getElementById('editing-right-btn');
 
-            function populateHorizontalGallery(galleryElement, items, isVideo) {
-                galleryElement.innerHTML = '';
-                items.forEach(item => {
-                    const card = document.createElement('div');
-                    // Retained fixed width class (horizontal-gallery-item) which is part of the look and feel
-                    card.className = "horizontal-gallery-item bg-white rounded-lg shadow-lg overflow-hidden flex-shrink-0 cursor-pointer";
-                    
-                    if (isVideo) {
-                        card.innerHTML = `
-                            <div class="relative aspect-video">
-                                <img src="${item.poster}" 
-                                        alt="Video Thumbnail for: ${item.title}" 
-                                        loading="lazy"
-                                        class="w-full h-full object-cover rounded-t-lg">
-                                                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-100 transition-opacity duration-300">
-                                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
-                                    </svg>
-                                </div>
-                            </div>
-                            <div class="p-4">
-                                <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
-                                <p class="text-sm text-gray-700">${item.description}</p>
-                            </div>
-                        `;
-                        card.dataset.url = item.url;
-                        card.dataset.poster = item.poster;
-                    } else {
-                            card.innerHTML = `
-                                <div class="relative aspect-video">
-                                    <img src="${item.url}" 
-                                            alt="Photography: ${item.title}" 
-                                            loading="lazy"
-                                            class="w-full h-full object-cover rounded-t-lg">
-                                </div>
-                                <div class="p-4">
-                                    <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
-                                    <p class="text-sm text-gray-700">${item.description}</p>
-                                </div>
-                            `;
-                            card.dataset.url = item.url;
-                    }
-                    galleryElement.appendChild(card);
-                });
-            }
+            const pastWorkGallery = document.getElementById('past-work-gallery');
+            const pastWorkLeftBtn = document.getElementById('past-work-left-btn');
+            const pastWorkRightBtn = document.getElementById('past-work-right-btn');
+            
+            const imageGallery = document.getElementById('image-gallery');
+            const imageGalleryLeftBtn = document.getElementById('image-gallery-left-btn');
+            const imageGalleryRightBtn = document.getElementById('image-gallery-right-btn');
 
-            function setupGalleryNavigation(leftBtn, rightBtn, gallery) {
-                leftBtn.addEventListener('click', () => {
-                    // Scroll amount adjusted to reliably move by one card width + margin (300 + 20)
-                    const scrollAmount = 320;
-                    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-                });
+            const lightbox = document.getElementById('lightbox');
+            const lightboxContent = document.getElementById('lightbox-content');
+            const lightboxCloseBtn = document.getElementById('lightbox-close');
 
-                rightBtn.addEventListener('click', () => {
-                    const scrollAmount = 320;
-                    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-                });
-            }
+            function populateHorizontalGallery(galleryElement, items, isVideo) {
+                galleryElement.innerHTML = '';
+                items.forEach(item => {
+                    const card = document.createElement('div');
+                    // Retained fixed width class (horizontal-gallery-item) which is part of the look and feel
+                    card.className = "horizontal-gallery-item bg-white rounded-lg shadow-lg overflow-hidden flex-shrink-0 cursor-pointer";
+                    
+                    if (isVideo) {
+                        card.innerHTML = `
+                            <div class="relative aspect-video">
+                                <img src="${item.poster}" 
+                                        alt="Video Thumbnail for: ${item.title}" 
+                                        loading="lazy"
+                                        class="w-full h-full object-cover rounded-t-lg">
+                                <!-- Play button overlay for UX, centered, always visible -->
+                                <div class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 opacity-100 transition-opacity duration-300">
+                                    <svg class="w-12 h-12 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM9.555 7.168A1 1 0 008 8v4a1 1 0 001.555.832l3-2a1 1 0 000-1.664l-3-2z" clip-rule="evenodd" />
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="p-4">
+                                <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
+                                <p class="text-sm text-gray-700">${item.description}</p>
+                            </div>
+                        `;
+                        card.dataset.url = item.url;
+                        card.dataset.poster = item.poster;
+                    } else {
+                            card.innerHTML = `
+                                <div class="relative aspect-video">
+                                    <img src="${item.url}" 
+                                            alt="Photography: ${item.title}" 
+                                            loading="lazy"
+                                            class="w-full h-full object-cover rounded-t-lg">
+                                </div>
+                                <div class="p-4">
+                                    <h3 class="text-2xl font-bold mb-2">${item.title}</h3>
+                                    <p class="text-sm text-gray-700">${item.description}</p>
+                                </div>
+                            `;
+                            card.dataset.url = item.url;
+                    }
+                    galleryElement.appendChild(card);
+                });
+            }
 
-            // Setup all gallery navigations 
-            setupGalleryNavigation(filmsLeftBtn, filmsRightBtn, filmsGallery);
-            setupGalleryNavigation(editingLeftBtn, editingRightBtn, editingGallery);
-            setupGalleryNavigation(pastWorkLeftBtn, pastWorkRightBtn, pastWorkGallery);
-            setupGalleryNavigation(imageGalleryLeftBtn, imageGalleryRightBtn, imageGallery);
+            function setupGalleryNavigation(leftBtn, rightBtn, gallery) {
+                leftBtn.addEventListener('click', () => {
+                    // Scroll amount adjusted to reliably move by one card width + margin (300 + 20)
+                    const scrollAmount = 320;
+                    gallery.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+                });
+
+                rightBtn.addEventListener('click', () => {
+                    const scrollAmount = 320;
+                    gallery.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+                });
+            }
+
+            // Setup all gallery navigations 
+            setupGalleryNavigation(filmsLeftBtn, filmsRightBtn, filmsGallery);
+            setupGalleryNavigation(editingLeftBtn, editingRightBtn, editingGallery);
+            setupGalleryNavigation(pastWorkLeftBtn, pastWorkRightBtn, pastWorkGallery);
+            setupGalleryNavigation(imageGalleryLeftBtn, imageGalleryRightBtn, imageGallery);
 
 
-            // FILTER AND POPULATE GALLERIES from the single mediaData source
-            populateHorizontalGallery(
-                filmsGallery, 
-                mediaData.filter(item => item.type === 'video' && item.category === 'films'), 
-                true
-            );
-            populateHorizontalGallery(
-                editingGallery, 
-                mediaData.filter(item => item.type === 'video' && item.category === 'editing'), 
-                true
-            );
-            populateHorizontalGallery(
-                pastWorkGallery, 
-                mediaData.filter(item => item.type === 'video' && item.category === 'archive'), 
-                true
-            );
-            populateHorizontalGallery(
-                imageGallery, 
-                mediaData.filter(item => item.type === 'image'), 
-                false
-            );
+            // FILTER AND POPULATE GALLERIES from the single mediaData source
+            populateHorizontalGallery(
+                filmsGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'films'), 
+                true
+            );
+            populateHorizontalGallery(
+                editingGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'editing'), 
+                true
+            );
+            populateHorizontalGallery(
+                pastWorkGallery, 
+                mediaData.filter(item => item.type === 'video' && item.category === 'archive'), 
+                true
+            );
+            populateHorizontalGallery(
+                imageGallery, 
+                mediaData.filter(item => item.type === 'image'), 
+                false
+            );
 
-            document.querySelectorAll('.horizontal-gallery-item').forEach(card => {
-                card.addEventListener('click', (e) => {
-                    // Find the closest parent card to ensure click handler works even if clicking text
-                    const videoCard = e.currentTarget;
-                    const itemUrl = videoCard.dataset.url;
-                    
-                    // Check if it's a video (YouTube embed URL)
-                    if (itemUrl.includes('youtube.com/embed')) {
-                        const iframeContainer = document.createElement('div');
-                        iframeContainer.className = 'relative video-player-container rounded-lg';
-                        // Retained 'title' attribute to iframe for accessibility
-                        iframeContainer.innerHTML = `
-                            <iframe 
-                                class="w-full h-full rounded-lg absolute inset-0" 
-                                src="${itemUrl}?autoplay=1&rel=0" 
-                                frameborder="0" 
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                                allowfullscreen
-                                title="${videoCard.querySelector('h3').textContent} - YouTube Video Player"
-                            ></iframe>
-                        `;
-                        openLightbox(iframeContainer);
-                    } else {
-                        // Handle image click
-                        const imageElement = document.createElement('img');
-                        imageElement.src = itemUrl;
-                        imageElement.alt = videoCard.querySelector('h3').textContent;
-                        // Max-h-screen-lg ensures the image fits better within typical phone/tablet screens
-                        imageElement.className = 'max-w-full max-h-screen-lg object-contain'; 
-                        
-                        const imageContainer = document.createElement('div');
-                        imageContainer.className = 'flex justify-center items-center w-full h-full p-4';
-                        imageContainer.appendChild(imageElement);
-                        
-                        openLightbox(imageContainer);
-                    }
-                });
-            });
+            document.querySelectorAll('.horizontal-gallery-item').forEach(card => {
+                card.addEventListener('click', (e) => {
+                    // Find the closest parent card to ensure click handler works even if clicking text
+                    const videoCard = e.currentTarget;
+                    const itemUrl = videoCard.dataset.url;
+                    
+                    // Check if it's a video (YouTube embed URL)
+                    if (itemUrl.includes('youtube.com/embed')) {
+                        const iframeContainer = document.createElement('div');
+                        iframeContainer.className = 'relative video-player-container rounded-lg';
+                        // Retained 'title' attribute to iframe for accessibility
+                        iframeContainer.innerHTML = `
+                            <iframe 
+                                class="w-full h-full rounded-lg absolute inset-0" 
+                                src="${itemUrl}?autoplay=1&rel=0" 
+                                frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen
+                                title="${videoCard.querySelector('h3').textContent} - YouTube Video Player"
+                            ></iframe>
+                        `;
+                        openLightbox(iframeContainer);
+                    } else {
+                        // Handle image click
+                        const imageElement = document.createElement('img');
+                        imageElement.src = itemUrl;
+                        imageElement.alt = videoCard.querySelector('h3').textContent;
+                        // Max-h-screen-lg ensures the image fits better within typical phone/tablet screens
+                        imageElement.className = 'max-w-full max-h-screen-lg object-contain'; 
+                        
+                        const imageContainer = document.createElement('div');
+                        imageContainer.className = 'flex justify-center items-center w-full h-full p-4';
+                        imageContainer.appendChild(imageElement);
+                        
+                        openLightbox(imageContainer);
+                    }
+                });
+            });
 
-            function openLightbox(content) {
-                lightboxContent.innerHTML = '';
-                lightboxContent.appendChild(content);
-                lightbox.classList.remove('hidden');
-                lightbox.classList.add('flex');
-            }
+            function openLightbox(content) {
+                lightboxContent.innerHTML = '';
+                lightboxContent.appendChild(content);
+                lightbox.classList.remove('hidden');
+                lightbox.classList.add('flex');
+            }
 
-            function closeLightbox() {
-                // Stop any running YouTube videos when closing the lightbox
-                const iframe = lightboxContent.querySelector('iframe');
-                if (iframe) {
-                    iframe.src = iframe.src.replace("?autoplay=1&rel=0", ""); // Stops autoplay by resetting source
-                }
+            function closeLightbox() {
+                // Stop any running YouTube videos when closing the lightbox
+                const iframe = lightboxContent.querySelector('iframe');
+                if (iframe) {
+                    iframe.src = iframe.src.replace("?autoplay=1&rel=0", ""); // Stops autoplay by resetting source
+                }
 
-                lightbox.classList.add('hidden');
-                lightbox.classList.remove('flex');
-                lightboxContent.innerHTML = '';
-            }
+                lightbox.classList.add('hidden');
+                lightbox.classList.remove('flex');
+                lightboxContent.innerHTML = '';
+            }
 
-            lightboxCloseBtn.addEventListener('click', closeLightbox);
-            lightbox.addEventListener('click', (e) => {
-                // Closes lightbox if the user clicks the dark background but not the content window
-                const lightboxWindow = lightbox.querySelector('.relative.w-full');
-                if (e.target === lightbox || (lightboxWindow && !lightboxWindow.contains(e.target))) {
-                    closeLightbox();
-                }
-            });
+            lightboxCloseBtn.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', (e) => {
+                // Closes lightbox if the user clicks the dark background but not the content window
+                const lightboxWindow = lightbox.querySelector('.relative.w-full');
+                if (e.target === lightbox || (lightboxWindow && !lightboxWindow.contains(e.target))) {
+                    closeLightbox();
+                }
+            });
 
-            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    // Scrolls to element, adjusting for fixed header height
-                    const targetId = this.getAttribute('href');
-                    const targetElement = document.querySelector(targetId);
-                    const headerHeight = document.querySelector('header').offsetHeight;
+            document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    // Scrolls to element, adjusting for fixed header height
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    const headerHeight = document.querySelector('header').offsetHeight;
 
-                    if (targetElement) {
-                        window.scrollTo({
-                            top: targetElement.offsetTop - headerHeight - 10, // Added slight offset
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-        });
-    </script>
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - headerHeight - 10, // Added slight offset
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </body>
 </html>

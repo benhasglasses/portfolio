@@ -31,6 +31,59 @@
     <link rel="preconnect" href="https://i.ytimg.com">
     <link rel="preconnect" href="https://raw.githubusercontent.com">
 
+    <!-- FIREBASE IMPORT for Analytics/Tracking -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, getDoc, setDoc, updateDoc, increment, collection } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        import { setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        
+        // Log level for debugging Firestore issues
+        setLogLevel('Debug');
+
+        const firebaseConfig = JSON.parse(typeof __firebase_config !== 'undefined' ? __firebase_config : '{}');
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+
+        if (Object.keys(firebaseConfig).length > 0) {
+            const app = initializeApp(firebaseConfig);
+            const db = getFirestore(app);
+            const auth = getAuth(app);
+
+            async function initializeAuthAndTracking() {
+                try {
+                    if (initialAuthToken) {
+                        await signInWithCustomToken(auth, initialAuthToken);
+                    } else {
+                        await signInAnonymously(auth);
+                    }
+                    
+                    const userId = auth.currentUser?.uid || crypto.randomUUID();
+                    
+                    // --- View Tracking Implementation (Public Data) ---
+                    // Path: /artifacts/{appId}/public/data/analytics/{documentId}
+                    const trackingDocPath = `/artifacts/${appId}/public/data/analytics/view_counts`;
+                    const viewCountRef = doc(db, trackingDocPath);
+
+                    // Increment the total page view count
+                    await setDoc(viewCountRef, { 
+                        total_views: increment(1),
+                        last_view_at: new Date().toISOString(),
+                        last_viewer_id: userId
+                    }, { merge: true });
+                    
+                    console.log(`Firestore: View count incremented for app ${appId}`);
+
+                } catch (error) {
+                    console.error("Firestore Initialization or Tracking Error:", error);
+                }
+            }
+            initializeAuthAndTracking();
+        } else {
+            console.warn("Firestore: Firebase config not found. View tracking disabled.");
+        }
+    </script>
+
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
         /* FONT HOSTING: Custom Font Face Rule - NOW USING JSDELIVR CDN FOR STABILITY */
@@ -200,7 +253,7 @@
         "Cinematography",
         "Video Production"
       ],
-      "image": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/ben.JPG",
+      "image": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/ben.JPG",
       "sameAs": [
         "https://www.youtube.com/benhasglasses", 
         "https://linkedin.com/in/YourLinkedIn",
@@ -489,6 +542,15 @@
                     "poster": 'https://i.ytimg.com/vi/fxs6m2-l85k/hqdefault.jpg',
                     "description": 'Directed by Paul Yalen'
                 },
+                {
+                    "type": "video",
+                    "category": "editing",
+                    "title": 'Queen of Hearts',
+                    // Original URL was https://www.youtube.com/embed/jZIJct9eeAw?si=euzQgMVRCu5RySWb 
+                    "url": "https://www.youtube.com/embed/jZIJct9eeAw",
+                    "poster": "https://i.ytimg.com/vi/jZIJct9eeAw/hqdefault.jpg",
+                    "description": "Directed by Cameron Cloutier"
+                },
 
                 // --- ARCHIVE (Past Work) ---
                 {
@@ -743,269 +805,609 @@
                 // --- IMAGES (Photo Gallery) ---
                 {
                     "type": "image",
-                    "title": "Madrid",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/01.jpg",
-                    "description": ""
+                    "title": "alhambra",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/alhambra.jpg",
+                    "description": "alhambra"
                 },
                 {
                     "type": "image",
-                    "title": "Alhambra",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/02.jpg",
-                    "description": ""
+                    "title": "arthursseat",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/arthursseat.jpg",
+                    "description": "arthursseat"
                 },
                 {
                     "type": "image",
-                    "title": "Watercolor",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/03.jpg",
-                    "description": ""
+                    "title": "autumnal",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/autumnal.jpg",
+                    "description": "autumnal"
                 },
                 {
                     "type": "image",
-                    "title": "Bethel",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/04.jpg",
-                    "description": ""
+                    "title": "beach",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/beach.jpg",
+                    "description": "beach"
                 },
                 {
                     "type": "image",
-                    "title": "Tractor",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/05.jpg",
-                    "description": ""
+                    "title": "beantown",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/beantown.jpg",
+                    "description": "beantown"
                 },
                 {
                     "type": "image",
-                    "title": "Escorial",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/06.jpg",
-                    "description": ""
+                    "title": "believe",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/believe.jpg",
+                    "description": "believe"
                 },
                 {
                     "type": "image",
-                    "title": "Cinema",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/07.jpg",
-                    "description": ""
+                    "title": "bern",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/bern.jpg",
+                    "description": "bern"
+                },
+                {
+                    "type": "image",
+                    "title": "bethel",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/bethel.jpg",
+                    "description": "bethel"
+                },
+                {
+                    "type": "image",
+                    "title": "blue",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/blue.jpg",
+                    "description": "blue"
+                },
+                {
+                    "type": "image",
+                    "title": "boy",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/boy.jpg",
+                    "description": "boy"
+                },
+                {
+                    "type": "image",
+                    "title": "capitol",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/capitol.jpg",
+                    "description": "capitol"
+                },
+                {
+                    "type": "image",
+                    "title": "casefiles",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/casefiles.jpg",
+                    "description": "casefiles"
+                },
+                {
+                    "type": "image",
+                    "title": "chess",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/chess.jpg",
+                    "description": "chess"
+                },
+                {
+                    "type": "image",
+                    "title": "cinema",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/cinema.jpg",
+                    "description": "cinema"
+                },
+                {
+                    "type": "image",
+                    "title": "converse",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/converse.jpg",
+                    "description": "converse"
+                },
+                {
+                    "type": "image",
+                    "title": "cove",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/cove.jpg",
+                    "description": "cove"
+                },
+                {
+                    "type": "image",
+                    "title": "danger",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/danger.jpg",
+                    "description": "danger"
+                },
+                {
+                    "type": "image",
+                    "title": "danielsmith",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/danielsmith.jpg",
+                    "description": "danielsmith"
+                },
+                {
+                    "type": "image",
+                    "title": "devotion",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/devotion.jpg",
+                    "description": "devotion"
+                },
+                {
+                    "type": "image",
+                    "title": "drift",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/drift.jpg",
+                    "description": "drift"
+                },
+                {
+                    "type": "image",
+                    "title": "eddy",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/eddy.jpg",
+                    "description": "eddy"
+                },
+                {
+                    "type": "image",
+                    "title": "edinburghcastle",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/edinburghcastle.jpg",
+                    "description": "edinburghcastle"
+                },
+                {
+                    "type": "image",
+                    "title": "edinburghgates",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/edinburghgates.jpg",
+                    "description": "edinburghgates"
+                },
+                {
+                    "type": "image",
+                    "title": "ellipses",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/ellipses.jpg",
+                    "description": "ellipses"
+                },
+                {
+                    "type": "image",
+                    "title": "escorial",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/escorial.jpg",
+                    "description": "escorial"
+                },
+                {
+                    "type": "image",
+                    "title": "espana",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/espana.jpg",
+                    "description": "espana"
+                },
+                {
+                    "type": "image",
+                    "title": "falls",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/falls.jpg",
+                    "description": "falls"
+                },
+                {
+                    "type": "image",
+                    "title": "finewatercolor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/finewatercolor.jpg",
+                    "description": "finewatercolor"
+                },
+                {
+                    "type": "image",
+                    "title": "fire",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/fire.jpg",
+                    "description": "fire"
+                },
+                {
+                    "type": "image",
+                    "title": "flower",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/flower.jpg",
+                    "description": "flower"
+                },
+                {
+                    "type": "image",
+                    "title": "forrestry",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/forrestry.jpg",
+                    "description": "forrestry"
+                },
+                {
+                    "type": "image",
+                    "title": "governmentcenter",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/governmentcenter.png",
+                    "description": "governmentcenter"
+                },
+                {
+                    "type": "image",
+                    "title": "holdover",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/holdover.jpg",
+                    "description": "holdover"
+                },
+                {
+                    "type": "image",
+                    "title": "hoot",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/hoot.jpg",
+                    "description": "hoot"
+                },
+                {
+                    "type": "image",
+                    "title": "hyannis",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/hyannis.jpg",
+                    "description": "hyannis"
+                },
+                {
+                    "type": "image",
+                    "title": "iceland",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/iceland.jpg",
+                    "description": "iceland"
+                },
+                {
+                    "type": "image",
+                    "title": "Icelandicwater",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/Icelandicwater.jpg",
+                    "description": "Icelandicwater"
+                },
+                {
+                    "type": "image",
+                    "title": "jumpoff",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/jumpoff.jpg",
+                    "description": "jumpoff"
+                },
+                {
+                    "type": "image",
+                    "title": "ken",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/ken.jpg",
+                    "description": "ken"
+                },
+                {
+                    "type": "image",
+                    "title": "landscape",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/landscape.jpg",
+                    "description": "landscape"
+                },
+                {
+                    "type": "image",
+                    "title": "led",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/led.jpg",
+                    "description": "led"
+                },
+                {
+                    "type": "image",
+                    "title": "lego",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/lego.jpg",
+                    "description": "lego"
+                },
+                {
+                    "type": "image",
+                    "title": "liberrty",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/liberrty.jpg",
+                    "description": "liberrty"
+                },
+                {
+                    "type": "image",
+                    "title": "light",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/light.jpg",
+                    "description": "light"
+                },
+                {
+                    "type": "image",
+                    "title": "ligjts",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/ligjts.jpg",
+                    "description": "ligjts"
+                },
+                {
+                    "type": "image",
+                    "title": "lincoln",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/lincoln.jpg",
+                    "description": "lincoln"
+                },
+                {
+                    "type": "image",
+                    "title": "lookup copy",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/lookup copy.jpg",
+                    "description": "lookup copy"
+                },
+                {
+                    "type": "image",
+                    "title": "lookup",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/lookup.jpg",
+                    "description": "lookup"
+                },
+                {
+                    "type": "image",
+                    "title": "lothlorien",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/lothlorien.jpg",
+                    "description": "lothlorien"
+                },
+                {
+                    "type": "image",
+                    "title": "madrid",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/madrid.jpg",
+                    "description": "madrid"
+                },
+                {
+                    "type": "image",
+                    "title": "maine",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/maine.jpg",
+                    "description": "maine"
+                },
+                {
+                    "type": "image",
+                    "title": "mic",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/mic.jpg",
+                    "description": "mic"
+                },
+                {
+                    "type": "image",
+                    "title": "moby",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/moby.jpg",
+                    "description": "moby"
+                },
+                {
+                    "type": "image",
+                    "title": "moon",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/moon.jpg",
+                    "description": "moon"
+                },
+                {
+                    "type": "image",
+                    "title": "morning",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/morning.jpg",
+                    "description": "morning"
+                },
+                {
+                    "type": "image",
+                    "title": "mountauburn",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/mountauburn.jpg",
+                    "description": "mountauburn"
+                },
+                {
+                    "type": "image",
+                    "title": "nh16",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/nh16.jpg",
+                    "description": "nh16"
+                },
+                {
+                    "type": "image",
+                    "title": "nightgame",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/nightgame.jpg",
+                    "description": "nightgame"
+                },
+                {
+                    "type": "image",
+                    "title": "northatlantic",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/northatlantic.jpg",
+                    "description": "northatlantic"
+                },
+                {
+                    "type": "image",
+                    "title": "notre",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/notre.jpg",
+                    "description": "notre"
+                },
+                {
+                    "type": "image",
+                    "title": "notredame",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/notredame.jpg",
+                    "description": "notredame"
+                },
+                {
+                    "type": "image",
+                    "title": "offices",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/offices.jpg",
+                    "description": "offices"
+                },
+                {
+                    "type": "image",
+                    "title": "oldeditstation",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/oldeditstation.jpg",
+                    "description": "oldeditstation"
+                },
+                {
+                    "type": "image",
+                    "title": "onlocation",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/onlocation.jpg",
+                    "description": "onlocation"
                 },
                 {
                     "type": "image",
                     "title": "paints",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/08.jpg",
-                    "description": ""
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/paints.jpg",
+                    "description": "paints"
                 },
                 {
                     "type": "image",
-                    "title": "Mount Auburn",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/09.jpg",
-                    "description": ""
+                    "title": "phantoms",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/phantoms.jpg",
+                    "description": "phantoms"
                 },
                 {
                     "type": "image",
-                    "title": "Ipswich",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/10.jpg",
-                    "description": ""
+                    "title": "portable",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/portable.jpg",
+                    "description": "portable"
                 },
                 {
                     "type": "image",
-                    "title": "Blue",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/11.jpg",
-                    "description": ""
+                    "title": "protest",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/protest.jpg",
+                    "description": "protest"
                 },
                 {
                     "type": "image",
-                    "title": "Iceland",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/12.jpg",
-                    "description": ""
+                    "title": "protestant",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/protestant.jpg",
+                    "description": "protestant"
                 },
                 {
                     "type": "image",
-                    "title": "Light",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/13.jpg",
-                    "description": ""
+                    "title": "purple",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/purple.jpg",
+                    "description": "purple"
                 },
                 {
                     "type": "image",
-                    "title": "Tectonic",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/14.jpg",
-                    "description": ""
+                    "title": "racecar",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/racecar.jpg",
+                    "description": "racecar"
                 },
                 {
                     "type": "image",
-                    "title": "Sky",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/15.jpg",
-                    "description": ""
+                    "title": "rift",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/rift.jpg",
+                    "description": "rift"
                 },
                 {
                     "type": "image",
-                    "title": "Tomatillo",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/16.jpg",
-                    "description": ""
+                    "title": "rockies",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/rockies.jpg",
+                    "description": "rockies"
                 },
                 {
                     "type": "image",
-                    "title": "Purple",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/17.jpg",
-                    "description": ""
+                    "title": "scotland",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/scotland.jpg",
+                    "description": "scotland"
                 },
                 {
                     "type": "image",
-                    "title": "Vocal",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/18.jpg",
-                    "description": ""
+                    "title": "shakespeare",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/shakespeare.jpg",
+                    "description": "shakespeare"
                 },
                 {
                     "type": "image",
-                    "title": "Moon",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/19.jpg",
-                    "description": ""
+                    "title": "shippinguptoboston",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/shippinguptoboston.jpg",
+                    "description": "shippinguptoboston"
                 },
                 {
                     "type": "image",
-                    "title": "Zakim",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/20.jpg",
-                    "description": ""
+                    "title": "sky",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/sky.jpg",
+                    "description": "sky"
                 },
                 {
                     "type": "image",
-                    "title": "Converse",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/21.jpg",
-                    "description": ""
+                    "title": "snow",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/snow.jpg",
+                    "description": "snow"
                 },
                 {
                     "type": "image",
-                    "title": "Thoughts",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/23.jpg",
-                    "description": ""
+                    "title": "solidarity",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/solidarity.jpg",
+                    "description": "solidarity"
                 },
                 {
                     "type": "image",
-                    "title": "Onward",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/40.jpg",
-                    "description": ""
+                    "title": "stainedglass",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/stainedglass.jpg",
+                    "description": "stainedglass"
                 },
                 {
                     "type": "image",
-                    "title": "Feel the Bern",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/22.jpg",
-                    "description": ""
+                    "title": "statue",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/statue.jpg",
+                    "description": "statue"
                 },
                 {
                     "type": "image",
-                    "title": "Bernie",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/25.jpg",
-                    "description": ""
+                    "title": "stop",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/stop.jpg",
+                    "description": "stop"
                 },
                 {
                     "type": "image",
-                    "title": "Bernie 2",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/26.jpg",
-                    "description": ""
+                    "title": "sundance",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/sundance.jpg",
+                    "description": "sundance"
                 },
                 {
                     "type": "image",
-                    "title": "blues",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/24.jpg",
-                    "description": ""
+                    "title": "tape",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/tape.jpg",
+                    "description": "tape"
                 },
                 {
                     "type": "image",
-                    "title": "Ken",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/27.jpg",
-                    "description": ""
+                    "title": "target",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/target.jpg",
+                    "description": "target"
                 },
                 {
                     "type": "image",
-                    "title": "Dropkick",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/28.jpg",
-                    "description": ""
-                },
-                /* Placeholder added previously for photo gallery entry that used a video URL */
-                {
-                    "type": "image",
-                    "title": "Shipping up",
-                    "url": "https://placehold.co/300x170/222222/FFFFFF?text=Shipping+Up",
-                    "description": "Placeholder for a photo."
-                },
-                /* End placeholder */
-                {
-                    "type": "image",
-                    "title": "to Boston",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/30.jpg",
-                    "description": ""
+                    "title": "think",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/think.jpg",
+                    "description": "think"
                 },
                 {
                     "type": "image",
-                    "title": "Rocky",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/32.jpg",
-                    "description": ""
+                    "title": "thistle",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/thistle.jpg",
+                    "description": "thistle"
                 },
                 {
                     "type": "image",
-                    "title": "Backpack",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/34.jpg",
-                    "description": ""
+                    "title": "thisway",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/thisway.jpg",
+                    "description": "thisway"
                 },
                 {
                     "type": "image",
-                    "title": "Autumnal",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/35.jpg",
-                    "description": ""
+                    "title": "tiger",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/tiger.jpg",
+                    "description": "tiger"
                 },
                 {
                     "type": "image",
-                    "title": "Snow",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/36.jpg",
-                    "description": ""
+                    "title": "tomatillo",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/tomatillo.jpg",
+                    "description": "tomatillo"
                 },
                 {
                     "type": "image",
-                    "title": "Watching",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/37.jpg",
-                    "description": ""
+                    "title": "tractor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/tractor.jpg",
+                    "description": "tractor"
                 },
                 {
                     "type": "image",
-                    "title": "Fumes",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/38.jpg",
-                    "description": ""
+                    "title": "ulysses",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/ulysses.jpg",
+                    "description": "ulysses"
                 },
                 {
                     "type": "image",
-                    "title": "Solidarity",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/41.jpg",
-                    "description": ""
+                    "title": "vast",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/vast.jpg",
+                    "description": "vast"
                 },
                 {
                     "type": "image",
-                    "title": "I voted for the maniac.",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/42.jpg",
-                    "description": ""
+                    "title": "victor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/victor.jpg",
+                    "description": "victor"
                 },
                 {
                     "type": "image",
-                    "title": "Not anymore..",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/43.jpg",
-                    "description": ""
+                    "title": "vocals",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/vocals.jpg",
+                    "description": "vocals"
                 },
                 {
                     "type": "image",
-                    "title": "The shots woke me up.",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/45.jpg",
-                    "description": ""
+                    "title": "voter",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/voter.jpg",
+                    "description": "voter"
                 },
                 {
                     "type": "image",
-                    "title": "Government Center",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/governmentcenter.png",
-                    "description": ""
+                    "title": "watercolor",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/watercolor.jpg",
+                    "description": "watercolor"
                 },
                 {
                     "type": "image",
-                    "title": "2016 NH",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/nh16.jpg",
-                    "description": ""
+                    "title": "waterfall",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/waterfall.jpg",
+                    "description": "waterfall"
                 },
                 {
                     "type": "image",
-                    "title": "X Files in MA",
-                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/images/xfiles.gif",
-                    "description": ""
+                    "title": "waterflow",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/waterflow.jpg",
+                    "description": "waterflow"
+                },
+                {
+                    "type": "image",
+                    "title": "windows",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/windows.jpg",
+                    "description": "windows"
+                },
+                {
+                    "type": "image",
+                    "title": "xfiles",
+                    "url": "https://cdn.jsdelivr.net/gh/benhasglasses/portfolio@main/photos/xfiles.gif",
+                    "description": "xfiles"
                 }
             ];
 
@@ -1065,7 +1467,7 @@
                             card.innerHTML = `
                                 <div class="relative aspect-video">
                                     <img src="${item.url}" 
-                                            alt="Photography: ${item.title}" 
+                                            alt="Photography: ${item.title} - ${item.description}" 
                                             loading="lazy"
                                             class="w-full h-full object-cover rounded-t-lg">
                                 </div>
@@ -1132,11 +1534,11 @@
                     if (itemUrl.includes('youtube.com/embed')) {
                         const iframeContainer = document.createElement('div');
                         iframeContainer.className = 'relative video-player-container rounded-lg';
-                        // Retained 'title' attribute to iframe for accessibility
+                        // UPDATED: Added modestbranding parameter for a cleaner look
                         iframeContainer.innerHTML = `
                             <iframe 
                                 class="w-full h-full rounded-lg absolute inset-0" 
-                                src="${itemUrl}?autoplay=1&rel=0" 
+                                src="${itemUrl}?modestbranding=1&autoplay=1&rel=0" 
                                 frameborder="0" 
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
                                 allowfullscreen
@@ -1172,7 +1574,8 @@
                 // Stop any running YouTube videos when closing the lightbox
                 const iframe = lightboxContent.querySelector('iframe');
                 if (iframe) {
-                    iframe.src = iframe.src.replace("?autoplay=1&rel=0", ""); // Stops autoplay by resetting source
+                    // UPDATED: Use the new modestbranding parameter in the replacement string
+                    iframe.src = iframe.src.replace("?modestbranding=1&autoplay=1&rel=0", ""); // Stops autoplay by resetting source
                 }
 
                 lightbox.classList.add('hidden');

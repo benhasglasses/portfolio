@@ -12,29 +12,52 @@
             font-family: 'Inter', sans-serif;
             min-height: 100vh;
         }
+
+        /* Custom CSS for hover effect on the video container */
+        #video-wrapper {
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            transform: scale(0.98);
+        }
+
+        #video-wrapper:hover {
+            transform: scale(1.0);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
+        }
+        
+        /* The iFrame itself controls the controls fading, but autohide is a deprecated attempt */
+        /* To simulate hiding, we can change the opacity of the surrounding elements on hover */
+        .info-text {
+            opacity: 0.5;
+            transition: opacity 0.3s ease-in-out;
+        }
+
+        #video-container:hover .info-text {
+            opacity: 1;
+        }
     </style>
 </head>
 <body class="bg-gray-100 flex items-center justify-center p-4">
 
     <!-- Video Container -->
     <!-- Centered using flexbox on the body -->
-    <div class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden p-6">
-        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Your Embedded Video</h1>
+    <div id="video-container" class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden p-6">
         
+        <!-- Removed H1 for maximum minimalism -->
+
         <!-- The Responsive iFrame Wrapper -->
-        <!-- This uses the aspect-video class for a standard 16:9 ratio -->
-        <div class="aspect-video w-full">
+        <div id="video-wrapper" class="aspect-video w-full">
             <!--
-                The YouTube embed URL uses parameters for maximum minimalism while keeping controls:
-                - controls=1: To ensure the player controls (bottom bar) are visible. (Required)
+                The YouTube embed URL uses parameters:
+                - controls=1: To ensure the player controls (bottom bar) are visible.
                 - rel=0: To prevent related videos from showing after the video ends.
                 - modestbranding=1: To reduce the size of the YouTube logo/branding.
                 - iv_load_policy=3: To disable video annotations/cards.
-                - disablekb=1: To disable keyboard controls, contributing to a cleaner player state.
+                - disablekb=1: To disable keyboard controls.
+                - autohide=1: An older parameter that attempts to hide controls, but is often overridden by controls=1.
             -->
             <iframe
                 class="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
+                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&autohide=1"
                 title="Embedded YouTube Video"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -42,8 +65,8 @@
             </iframe>
         </div>
         
-        <p class="mt-4 text-center text-sm text-gray-500">
-            This embedding is configured to show only the player controls.
+        <p class="mt-4 text-center text-sm text-gray-500 info-text">
+            The video player will automatically hide its controls after a few seconds of inactivity, which is the standard behavior for YouTube embeds.
         </p>
     </div>
 

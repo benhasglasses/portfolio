@@ -25,14 +25,16 @@
         <!-- This uses the aspect-video class for a standard 16:9 ratio -->
         <div class="aspect-video w-full">
             <!--
-                The YouTube embed URL uses parameters:
+                The YouTube embed URL uses parameters for maximum minimalism while keeping controls:
+                - controls=1: To ensure the player controls (bottom bar) are visible. (Required)
                 - rel=0: To prevent related videos from showing after the video ends.
-                - controls=1: To ensure the player controls are visible.
-                - modestbranding=1: To reduce the size of the YouTube logo (though a small text watermark remains).
+                - modestbranding=1: To reduce the size of the YouTube logo/branding.
+                - iv_load_policy=3: To disable video annotations/cards.
+                - disablekb=1: To disable keyboard controls, contributing to a cleaner player state.
             -->
             <iframe
                 class="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1"
+                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1"
                 title="Embedded YouTube Video"
                 frameborder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"

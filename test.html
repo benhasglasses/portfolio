@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Embedded Video Player</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Apply the Inter font and ensure the body fills the viewport for centering */
+        body {
+            font-family: 'Inter', sans-serif;
+            min-height: 100vh;
+        }
+    </style>
+</head>
+<body class="bg-gray-100 flex items-center justify-center p-4">
+
+    <!-- Video Container -->
+    <!-- Centered using flexbox on the body -->
+    <div class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden p-6">
+        <h1 class="text-2xl font-bold text-gray-800 mb-6 text-center">Your Embedded Video</h1>
+        
+        <!-- The Responsive iFrame Wrapper -->
+        <!-- This uses the aspect-video class for a standard 16:9 ratio -->
+        <div class="aspect-video w-full">
+            <!--
+                The YouTube embed URL uses parameters:
+                - rel=0: To prevent related videos from showing after the video ends.
+                - controls=1: To ensure the player controls are visible.
+                - modestbranding=1: To reduce the size of the YouTube logo (though a small text watermark remains).
+            -->
+            <iframe
+                class="w-full h-full rounded-lg"
+                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1"
+                title="Embedded YouTube Video"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+        <p class="mt-4 text-center text-sm text-gray-500">
+            This embedding is configured to show only the player controls.
+        </p>
+    </div>
+
+</body>
+</html>

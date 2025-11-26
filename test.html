@@ -3,72 +3,231 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Minimal Embedded Video Player</title>
-    <!-- Load Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Word Guess Game</title>
     <style>
-        /* Apply the Inter font and ensure the body fills the viewport for centering */
         body {
-            font-family: 'Inter', sans-serif;
-            min-height: 100vh;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f4f4f4;
+            color: #333;
         }
 
-        /* Custom CSS for hover effect on the video container */
-        #video-wrapper {
-            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-            transform: scale(0.98);
+        #game-board {
+            display: grid;
+            grid-template-rows: repeat(6, 1fr);
+            gap: 5px;
+            padding: 20px;
         }
 
-        #video-wrapper:hover {
-            transform: scale(1.0);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25); /* Stronger shadow on hover */
-        }
-        
-        /* The iFrame itself controls the controls fading, but autohide is a deprecated attempt */
-        /* To simulate hiding, we can change the opacity of the surrounding elements on hover */
-        .info-text {
-            opacity: 0.5;
-            transition: opacity 0.3s ease-in-out;
+        .row {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 5px;
         }
 
-        #video-container:hover .info-text {
-            opacity: 1;
+        .tile {
+            width: 60px;
+            height: 60px;
+            border: 2px solid #ccc;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            color: black;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+
+        .correct {
+            background-color: #6aaa64; /* Green */
+            color: white;
+            border-color: #6aaa64;
+        }
+
+        .present {
+            background-color: #c9b458; /* Yellow */
+            color: white;
+            border-color: #c9b458;
+        }
+
+        .absent {
+            background-color: #787c7e; /* Gray */
+            color: white;
+            border-color: #787c7e;
+        }
+
+        #keyboard-input {
+            margin-top: 20px;
+            padding: 10px;
+            font-size: 1.2em;
+            width: 250px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        #message {
+            margin-top: 20px;
+            font-size: 1.5em;
+            font-weight: bold;
+            min-height: 30px;
+        }
+
+        #reset-button {
+            margin-top: 15px;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
         }
     </style>
 </head>
-<body class="bg-gray-100 flex items-center justify-center p-4">
+<body>
 
-    <!-- Video Container -->
-    <!-- Centered using flexbox on the body -->
-    <div id="video-container" class="w-full max-w-4xl bg-white shadow-xl rounded-xl overflow-hidden p-6">
-        
-        <!-- Removed H1 for maximum minimalism -->
+    <h1>Word Guess Game</h1>
+    
 
-        <!-- The Responsive iFrame Wrapper -->
-        <div id="video-wrapper" class="aspect-video w-full">
-            <!--
-                The YouTube embed URL uses parameters:
-                - controls=1: To ensure the player controls (bottom bar) are visible.
-                - rel=0: To prevent related videos from showing after the video ends.
-                - modestbranding=1: To reduce the size of the YouTube logo/branding.
-                - iv_load_policy=3: To disable video annotations/cards.
-                - disablekb=1: To disable keyboard controls.
-                - autohide=1: An older parameter that attempts to hide controls, but is often overridden by controls=1.
-            -->
-            <iframe
-                class="w-full h-full rounded-lg"
-                src="https://www.youtube.com/embed/EHjLAJeiIno?controls=1&rel=0&modestbranding=1&iv_load_policy=3&disablekb=1&autohide=1"
-                title="Embedded YouTube Video"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen>
-            </iframe>
+    <div id="game-board">
         </div>
-        
-        <p class="mt-4 text-center text-sm text-gray-500 info-text">
-            The video player will automatically hide its controls after a few seconds of inactivity, which is the standard behavior for YouTube embeds.
-        </p>
-    </div>
+
+    <input type="text" id="keyboard-input" maxlength="5" placeholder="Enter your 5-letter guess" autofocus>
+    <button onclick="checkGuess()">Submit Guess</button>
+    <div id="message"></div>
+    <button id="reset-button" onclick="initGame()" style="display: none;">Play Again</button>
+
+    <script>
+        // --- Game Logic Variables ---
+        const WORDS = ["APPLE", "TRAIN", "HOUSE", "GRACE", "RIVER", "PLANE", "SHARK", "WORLD", "TOWER", "SWEET"];
+        let SECRET_WORD = "";
+        const MAX_GUESSES = 6;
+        let currentGuess = 0;
+        let isGameOver = false;
+
+        const board = document.getElementById('game-board');
+        const inputField = document.getElementById('keyboard-input');
+        const messageDisplay = document.getElementById('message');
+        const resetButton = document.getElementById('reset-button');
+
+        // --- Initialization ---
+        function initGame() {
+            // Reset variables
+            currentGuess = 0;
+            isGameOver = false;
+            
+            // Pick a new secret word
+            SECRET_WORD = WORDS[Math.floor(Math.random() * WORDS.length)];
+            console.log("Secret Word:", SECRET_WORD); // For testing! Remove for a real game.
+
+            // Clear the board
+            board.innerHTML = '';
+            
+            // Create the 6x5 grid
+            for (let i = 0; i < MAX_GUESSES; i++) {
+                const row = document.createElement('div');
+                row.classList.add('row');
+                for (let j = 0; j < 5; j++) {
+                    const tile = document.createElement('div');
+                    tile.classList.add('tile');
+                    row.appendChild(tile);
+                }
+                board.appendChild(row);
+            }
+
+            // Reset UI elements
+            inputField.value = '';
+            inputField.disabled = false;
+            messageDisplay.textContent = '';
+            resetButton.style.display = 'none';
+
+            inputField.focus(); // Set focus for easy typing
+        }
+
+        // --- Main Guess Function ---
+        function checkGuess() {
+            if (isGameOver) return;
+
+            let guess = inputField.value.toUpperCase();
+
+            // 1. Validation
+            if (guess.length !== 5) {
+                messageDisplay.textContent = "Guess must be 5 letters long!";
+                return;
+            }
+
+            // Get the current row of tiles
+            const currentRow = board.children[currentGuess];
+            
+            // 2. Display the guess
+            for (let i = 0; i < 5; i++) {
+                currentRow.children[i].textContent = guess[i];
+            }
+
+            // 3. Evaluate the guess and color the tiles
+            let secretWordMap = {};
+            for (let char of SECRET_WORD) {
+                secretWordMap[char] = (secretWordMap[char] || 0) + 1;
+            }
+
+            let results = new Array(5).fill('absent'); // Default to gray
+            
+            // First pass: Find 'correct' (green) letters
+            for (let i = 0; i < 5; i++) {
+                if (guess[i] === SECRET_WORD[i]) {
+                    results[i] = 'correct';
+                    secretWordMap[guess[i]]--;
+                }
+            }
+
+            // Second pass: Find 'present' (yellow) letters
+            for (let i = 0; i < 5; i++) {
+                if (results[i] !== 'correct') {
+                    if (secretWordMap[guess[i]] > 0) {
+                        results[i] = 'present';
+                        secretWordMap[guess[i]]--;
+                    }
+                }
+            }
+            
+            // Apply colors
+            for (let i = 0; i < 5; i++) {
+                currentRow.children[i].classList.add(results[i]);
+            }
+            
+            // 4. Game Over Checks
+            if (guess === SECRET_WORD) {
+                messageDisplay.textContent = "🎉 You Won! 🎉";
+                endGame(true);
+            } else {
+                currentGuess++;
+                if (currentGuess >= MAX_GUESSES) {
+                    messageDisplay.textContent = `Game Over! The word was ${SECRET_WORD}.`;
+                    endGame(false);
+                } else {
+                    messageDisplay.textContent = "Keep guessing!";
+                }
+            }
+
+            // 5. Cleanup for next guess
+            inputField.value = '';
+        }
+
+        function endGame(won) {
+            isGameOver = true;
+            inputField.disabled = true;
+            resetButton.style.display = 'block';
+        }
+
+        // --- Event Listener for Enter Key ---
+        inputField.addEventListener('keyup', (event) => {
+            if (event.key === 'Enter') {
+                checkGuess();
+            }
+        });
+
+        // Start the game when the page loads
+        window.onload = initGame;
+    </script>
 
 </body>
 </html>
